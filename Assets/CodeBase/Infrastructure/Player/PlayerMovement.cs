@@ -8,8 +8,11 @@ namespace CodeBase.Infrastructure.Player
     public class PlayerMovement : MonoBehaviour
     {
         private const string Vertical = "Vertical";
-        
+
         [SerializeField] private int _racketSpeed;
+        [SerializeField] private int _swapPosition = 10;
+        [SerializeField] private float _minPosition;
+        [SerializeField] private float _maxPosition;
 
         private Rigidbody2D _rigidbody;
         private Vector2 _racketDirection;
@@ -23,34 +26,48 @@ namespace CodeBase.Infrastructure.Player
 
         private void Start()
         {
-            PhotonNetwork.SendRate = 60;
-            PhotonNetwork.SerializationRate = 5;
-            
+            PhotonNetwork.SendRate = 20;
+            PhotonNetwork.SerializationRate = 15;
+
             _rigidbody = GetComponent<Rigidbody2D>();
             _camera = Camera.main;
         }
 
         private void Update()
         {
-            if (GetComponent<PhotonView>().IsMine == true)
+            if (GetComponent<PhotonView>().IsMine)
             {
-
-                // if (_inputService.Axis.sqrMagnitude > 0.001f)
-                // {
-                //     _racketDirection = _camera.transform.TransformDirection(_inputService.Axis);
-                //     _racketDirection.x = 0;
-                // }
-            
-                // _racketDirection = Vector2.zero;
-                // float directionY = Input.GetAxisRaw(Vertical);
-                // _racketDirection = new Vector2(0, directionY).normalized;
-                PlayerControl();
+                if (Application.isMobilePlatform)
+                {
+                    ControlInput();
+                }
+                else
+                {
+                    PlayerControl();
+                }
             }
         }
 
         private void FixedUpdate()
         {
             _rigidbody.velocity = _racketDirection * _racketSpeed;
+        }
+
+        private void ControlInput()
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                Vector2 touchPosition = _camera.ScreenToWorldPoint(touch.position);
+                Vector2 myPosition = _rigidbody.position;
+
+                if (Mathf.Abs(touchPosition.x - myPosition.x) <= 2)
+                {
+                    myPosition.y = Mathf.Lerp(myPosition.y, touchPosition.y, _swapPosition);
+                    myPosition.y = Mathf.Clamp(myPosition.y, _minPosition, _maxPosition);
+
+                    _rigidbody.position = myPosition;
+                }
+            }
         }
 
         private void PlayerControl()

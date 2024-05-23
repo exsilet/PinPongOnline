@@ -1,8 +1,7 @@
-using System;
 using TMPro;
 using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.Infrastructure.UI
 {
     public class Score : MonoBehaviour
     {

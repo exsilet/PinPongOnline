@@ -1,14 +1,13 @@
-﻿using System;
-using CodeBase.Infrastructure.Player;
+﻿using CodeBase.Infrastructure.Player;
 using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.Infrastructure.Ball
 {
     public class BallBounce : MonoBehaviour
     {
         [SerializeField] private BallMovement _ball;
 
-        private void Bounse(Collision2D collision)
+        private void Bounce(Collision2D collision)
         {
             Vector3 ballPosition = transform.position;
             Vector3 racketPosition = collision.transform.position;
@@ -36,7 +35,7 @@ namespace CodeBase
         {
             if (collision.collider.GetComponent<PlayerMovement>())
             {
-                Bounse(collision);
+                Bounce(collision);
             }
         }
     }

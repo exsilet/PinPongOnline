@@ -1,4 +1,5 @@
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Ball;
 using CodeBase.Infrastructure.Player;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.UI;
@@ -45,8 +46,8 @@ namespace CodeBase.Infrastructure
         {
             Ball = CreatePhoton(AssetPath.BallPath);
             
-            GamePlayingField.GetComponentInChildren<ScorePlayer>().Construct(Ball.GetComponent<BallMovement>());
-            GamePlayingField.GetComponentInChildren<ScoreEnemy>().Construct(Ball.GetComponent<BallMovement>());
+            GamePlayingField.GetComponentInChildren<ScorePlayer>().Construct(Ball.GetComponent<BallMovet>());
+            GamePlayingField.GetComponentInChildren<ScoreEnemy>().Construct(Ball.GetComponent<BallMovet>());
             
             return Ball;
         }

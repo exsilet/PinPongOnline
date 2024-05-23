@@ -95,11 +95,9 @@ GameObject:
   - component: {fileID: 3138563162184495977}
   - component: {fileID: 1882860751668548278}
   - component: {fileID: 5754913732827930731}
-  - component: {fileID: 475005582090469961}
-  - component: {fileID: 5284623899818281609}
   - component: {fileID: 3053529021073082808}
-  - component: {fileID: 2002510858589121014}
-  - component: {fileID: -6669763679113126626}
+  - component: {fileID: 7766918620743980208}
+  - component: {fileID: 3796318306300720778}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -146,7 +144,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -185,34 +183,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &475005582090469961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8017750699263255652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb312d95df5474cb36dbcb5f6117d48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startSpeed: 6
-  _extraSpeed: 1
-  _maxSpeed: 10
---- !u!114 &5284623899818281609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8017750699263255652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d546e13cedfe495b96e5a34392e8ffbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ball: {fileID: 475005582090469961}
 --- !u!114 &3053529021073082808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,12 +202,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 2002510858589121014}
-  - {fileID: -6669763679113126626}
+  - {fileID: 7766918620743980208}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2002510858589121014
+--- !u!114 &7766918620743980208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,7 +222,7 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &-6669763679113126626
+--- !u!114 &3796318306300720778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,27 +231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8017750699263255652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Script: {fileID: 11500000, guid: 8284dc991af14285a23580d6b62398e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 0.5
-    InterpolateLerpSpeed: 150
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 0
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 0
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
+  _startSpeed: 6

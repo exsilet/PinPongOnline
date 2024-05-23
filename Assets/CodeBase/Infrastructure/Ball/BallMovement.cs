@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Photon.Pun;
 using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.Infrastructure.Ball
 {
     public class BallMovement : MonoBehaviour
     {
@@ -24,8 +23,8 @@ namespace CodeBase
 
         private void Start()
         {
-            PhotonNetwork.SendRate = 60;
-            PhotonNetwork.SerializationRate = 60;
+            PhotonNetwork.SendRate = 20;
+            PhotonNetwork.SerializationRate = 15;
             
             _rigidbody = GetComponent<Rigidbody2D>();
 

@@ -1,12 +1,12 @@
-using System;
+using CodeBase.Infrastructure.Ball;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace CodeBase
+namespace CodeBase.Infrastructure.UI
 {
     public class ScoreEnemy : MonoBehaviour
     {
-        [SerializeField] private BallMovement _ball;
+        [SerializeField] private BallMovet _ball;
 
         private int _scorePlayer;
 
@@ -14,19 +14,19 @@ namespace CodeBase
         
         public event UnityAction<int> TextChanged;
 
-        public void Construct(BallMovement ballMovement)
+        public void Construct(BallMovet ball)
         {
-            _ball = ballMovement;
+            _ball = ball;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.GetComponent<BallBounce>())
+            if (collision.gameObject.GetComponent<BallMovet>())
             {
                 _scorePlayer++;
-                _ball.PlayerStart = true;
+                //_ball.PlayerStart = true;
                 TextChanged?.Invoke(_scorePlayer);
-                StartCoroutine(_ball.Launch());
+                //StartCoroutine(_ball.Launch());
             }
         }
     }
