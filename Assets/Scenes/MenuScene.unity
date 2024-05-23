@@ -340,13 +340,13 @@ MonoBehaviour:
   autoConnectClientBuild: 0
   offlineScene: Assets/Scenes/MenuScene.unity
   onlineScene: Assets/Scenes/GameScene.unity
-  transport: {fileID: 0}
+  transport: {fileID: 1689495051}
   networkAddress: localhost
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 5733094012825286141, guid: 88ca31d4141270e40be0e2d061e9c80b, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
@@ -366,8 +366,6 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
-  leftRacketSpawn: {fileID: 7139887966957364708, guid: e4f01e2302cf9e4489db77e2a3d2e242, type: 3}
-  rightRacketSpawn: {fileID: 3442286787056299206, guid: d659c1f58e12bd44eafe64bf1df3883f, type: 3}
 --- !u!4 &1689495053
 Transform:
   m_ObjectHideFlags: 0

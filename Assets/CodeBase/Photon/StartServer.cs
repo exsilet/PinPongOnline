@@ -84,7 +84,18 @@ namespace CodeBase.Photon
 
         private void EnterTowPlayers()
         {
-            NetworkManager.singleton.StartHost();
+            if (NetworkServer.active && NetworkClient.isConnected)
+            {
+                NetworkManager.singleton.StartHost();
+            }
+            else if (NetworkClient.isConnected)
+            {
+                NetworkManager.singleton.StartServer();
+            }
+            else if (NetworkServer.active)
+            {
+                NetworkManager.singleton.StartClient();
+            }
             //_stateMachine.Enter<LoadLevelState, string>(GameScene, _playerData, _skillData);
         }
 

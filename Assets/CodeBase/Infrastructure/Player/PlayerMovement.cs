@@ -1,4 +1,3 @@
-using CodeBase.Service;
 using Mirror;
 using UnityEngine;
 
@@ -10,16 +9,13 @@ namespace CodeBase.Infrastructure.Player
         private const string Vertical = "Vertical";
         
         [SerializeField] private int _racketSpeed;
+        [SerializeField] private int _swapPosition = 10;
+        [SerializeField] private float _minPosition;
+        [SerializeField] private float _maxPosition;
 
         private Rigidbody2D _rigidbody;
         private Vector2 _racketDirection;
-        private IInputService _inputService;
         private Camera _camera;
-
-        private void Awake()
-        {
-            _inputService = Game.InputService;
-        }
 
         private void Start()
         {
@@ -29,25 +25,35 @@ namespace CodeBase.Infrastructure.Player
 
         private void Update()
         {
-            // if (_inputService.Axis.sqrMagnitude > 0.001f)
-            // {
-            //     _racketDirection = _camera.transform.TransformDirection(_inputService.Axis);
-            //     _racketDirection.x = 0;
-            // }
-            
-            // _racketDirection = Vector2.zero;
-            // float directionY = Input.GetAxisRaw(Vertical);
-            // _racketDirection = new Vector2(0, directionY).normalized;
-            
-            PlayerControl();
+            if (!isLocalPlayer)
+                return;
+
+            if (Application.isMobilePlatform)
+                ControlInput();
+            else
+                PlayerControl();
         }
 
         private void FixedUpdate()
         {
-            if (!isLocalPlayer)
-                return;
-            
             _rigidbody.velocity = _racketDirection * _racketSpeed;
+        }
+        
+        private void ControlInput()
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                Vector2 touchPosition = _camera.ScreenToWorldPoint(touch.position);
+                Vector2 myPosition = _rigidbody.position;
+
+                if (Mathf.Abs(touchPosition.x - myPosition.x) <= 2)
+                {
+                    myPosition.y = Mathf.Lerp(myPosition.y, touchPosition.y, _swapPosition);
+                    myPosition.y = Mathf.Clamp(myPosition.y, _minPosition, _maxPosition);
+
+                    _rigidbody.position = myPosition;
+                }
+            }
         }
 
         private void PlayerControl()

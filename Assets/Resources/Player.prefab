@@ -193,6 +193,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   _racketSpeed: 5
+  _swapPosition: 10
+  _minPosition: -3.87
+  _maxPosition: 1.55
 --- !u!114 &6825261094219617314
 MonoBehaviour:
   m_ObjectHideFlags: 0

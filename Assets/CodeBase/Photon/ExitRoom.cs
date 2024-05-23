@@ -8,8 +8,6 @@ namespace CodeBase.Photon
 {
     public class ExitRoom : MonoBehaviour
     {
-        [SerializeField] private NetworkPong _networkPong;
-        
         private const string MenuScene = "MenuScene";
         private IGameStateMachine _stateMachine;
 
