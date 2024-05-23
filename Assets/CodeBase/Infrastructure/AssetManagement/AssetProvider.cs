@@ -1,4 +1,4 @@
-﻿using Photon.Pun;
+﻿using Mirror;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.AssetManagement
@@ -24,25 +24,29 @@ namespace CodeBase.Infrastructure.AssetManagement
             return Object.Instantiate(prefab, prefabPosition.transform.position, Quaternion.identity);
         }
 
-        public GameObject InstantiatePhoton(string path, string pathPosition)
+        public GameObject InstantiateClient(string path, string pathPosition)
         {
             var prefab = Resources.Load<GameObject>(path);
             var prefabPosition = Resources.Load<GameObject>(pathPosition);
-            return PhotonNetwork.Instantiate(prefab.name, prefabPosition.transform.position, Quaternion.identity);
+            GameObject client = Object.Instantiate(prefab, prefabPosition.transform.position, Quaternion.identity);
+            NetworkServer.Spawn(client);
+
+            return client;
         }
         
-        public GameObject InstantiatePhoton(string path)
+        public GameObject InstantiateServer(string path)
         {
             var prefab = Resources.Load<GameObject>(path);
-            Vector2 transformPosition = new Vector2(0, 0);
-            return PhotonNetwork.Instantiate(prefab.name, transformPosition, Quaternion.identity);
+            GameObject ball = Object.Instantiate(prefab);
+            NetworkServer.Spawn(ball);
+            return ball;
         }
         
-        public GameObject InstantiatePhotonRoom(string path, string pathPosition)
-        {
-            var prefab = Resources.Load<GameObject>(path);
-            var prefabPosition = Resources.Load<GameObject>(pathPosition);
-            return PhotonNetwork.InstantiateRoomObject(prefab.name, prefabPosition.transform.position, Quaternion.identity);
-        }
+        // public GameObject InstantiatePhotonRoom(string path, string pathPosition)
+        // {
+        //     var prefab = Resources.Load<GameObject>(path);
+        //     var prefabPosition = Resources.Load<GameObject>(pathPosition);
+        //     return PhotonNetwork.InstantiateRoomObject(prefab.name, prefabPosition.transform.position, Quaternion.identity);
+        // }
     }
 }

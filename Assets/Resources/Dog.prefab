@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 9196916310497983689}
   - component: {fileID: 3067956416992071940}
   - component: {fileID: 3092192047857287656}
-  - component: {fileID: 6052177352752849322}
-  - component: {fileID: 5752106281805031625}
   - component: {fileID: 6825261094219617314}
+  - component: {fileID: 2703772120464540063}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -188,46 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97984b27b3740fb4d8a18c152d839ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   _racketSpeed: 400
---- !u!114 &6052177352752849322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5733094012825286141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 5752106281805031625}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &5752106281805031625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5733094012825286141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 0
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!114 &6825261094219617314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,3 +204,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentMoney: 500
+--- !u!114 &2703772120464540063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733094012825286141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 3054995580
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0

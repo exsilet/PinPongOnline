@@ -1,12 +1,15 @@
 ﻿using CodeBase.Infrastructure.LevelLogic;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
-using Photon.Pun;
+using Mirror;
+using UnityEngine;
 
 namespace CodeBase.Photon
 {
-    public class ExitRoom : MonoBehaviourPunCallbacks
+    public class ExitRoom : MonoBehaviour
     {
+        [SerializeField] private NetworkPong _networkPong;
+        
         private const string MenuScene = "MenuScene";
         private IGameStateMachine _stateMachine;
 
@@ -17,14 +20,21 @@ namespace CodeBase.Photon
         
         public void LeaveRoom()
         {
-            PhotonNetwork.LeaveRoom();
-        }
-
-        public override void OnLeftRoom()
-        {
-            base.OnLeftRoom();
-            
-            _stateMachine.Enter<LoadMenuState, string>(MenuScene);
+            if (NetworkServer.active && NetworkClient.isConnected)
+            {
+                NetworkManager.singleton.StartHost();
+                _stateMachine.Enter<LoadMenuState, string>(MenuScene);
+            }
+            else if (NetworkClient.isConnected)
+            {
+                NetworkManager.singleton.StopClient();
+                _stateMachine.Enter<LoadMenuState, string>(MenuScene);
+            }
+            else if (NetworkServer.active)
+            {
+                NetworkManager.singleton.StopServer();
+                _stateMachine.Enter<LoadMenuState, string>(MenuScene);
+            }
         }
     }
 }

@@ -17,7 +17,10 @@ namespace CodeBase.Service
             }
         }
 
-        private static Vector2 UnityAxis() => 
-            new Vector2(0, SimpleInput.GetAxis(Vertical));
+        private static Vector2 UnityAxis()
+        {
+            return new Vector2(0, 0);
+            //return new Vector2(0, SimpleInput.GetAxis(Vertical));
+        }
     }
 }

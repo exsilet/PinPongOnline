@@ -8,8 +8,7 @@ namespace CodeBase.Infrastructure.AssetManagement
         GameObject Instantiate(string path);
         GameObject Instantiate(string path, Vector3 at);
         public GameObject Instantiate(string path, string pathPosition);
-        GameObject InstantiatePhoton(string path, string pathPosition);
-        GameObject InstantiatePhoton(string path);
-        public GameObject InstantiatePhotonRoom(string path, string pathPosition);
+        public GameObject InstantiateClient(string path, string pathPosition);
+        public GameObject InstantiateServer(string path);
     }
 }

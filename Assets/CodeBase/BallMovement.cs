@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using Photon.Pun;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace CodeBase
@@ -24,9 +22,6 @@ namespace CodeBase
 
         private void Start()
         {
-            PhotonNetwork.SendRate = 60;
-            PhotonNetwork.SerializationRate = 60;
-            
             _rigidbody = GetComponent<Rigidbody2D>();
 
             StartCoroutine(Launch());

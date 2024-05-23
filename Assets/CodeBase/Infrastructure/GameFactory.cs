@@ -2,7 +2,7 @@ using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Player;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.UI;
-using Photon.Pun;
+using Mirror;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure
@@ -43,7 +43,7 @@ namespace CodeBase.Infrastructure
 
         public GameObject CreateBall()
         {
-            Ball = CreatePhoton(AssetPath.BallPath);
+            Ball = _assets.InstantiateServer(AssetPath.BallPath);
             
             GamePlayingField.GetComponentInChildren<ScorePlayer>().Construct(Ball.GetComponent<BallMovement>());
             GamePlayingField.GetComponentInChildren<ScoreEnemy>().Construct(Ball.GetComponent<BallMovement>());
@@ -60,10 +60,8 @@ namespace CodeBase.Infrastructure
 
         public GameObject CreateHero(PlayerStaticData staticData, SkillStaticData skillData)
         {
-            if (PhotonNetwork.IsMasterClient)
+            if (NetworkServer.active)
             {
-                CreateBall();
-                
                 return PlayerCreation(staticData, skillData, AssetPath.Spawner, AssetPath.HudBattlePlayer1Path);
             }
             else
@@ -74,26 +72,19 @@ namespace CodeBase.Infrastructure
 
         private GameObject PlayerCreation(PlayerStaticData staticData, SkillStaticData skillData, string spawnerPlayer, string path)
         {
-            Hero1 = CreatePhotonHero(staticData.Prefab.name, spawnerPlayer);
-
+            Hero1 = ClientHero(staticData.Prefab.name, spawnerPlayer);
+        
             var hud = CreateHudBattle(path, staticData, skillData);
-
+        
             Construct(Hero1, staticData, hud);
-
+        
             return Hero1;
         }
 
-        private GameObject CreatePhotonHero(string namePlayer, string spawnerPlayer)
+        private GameObject ClientHero(string namePlayer, string spawnerPlayer)
         {
-            GameObject photonHero = _assets.InstantiatePhoton(namePlayer, spawnerPlayer);
-
-            return photonHero;
-        }
-
-        private GameObject CreatePhoton(string namePlayer)
-        {
-            GameObject photonObject = _assets.InstantiatePhoton(namePlayer);
-            return photonObject;
+            GameObject client = _assets.InstantiateClient(namePlayer, spawnerPlayer);
+            return client;
         }
 
         private GameObject CreateHudBattle(string path, PlayerStaticData staticData, SkillStaticData skillData)

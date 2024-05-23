@@ -9,7 +9,10 @@ namespace CodeBase.Service
         
         public abstract Vector2 Axis { get; }
 
-        protected static Vector2 SimpleInputAxis() => 
-            new Vector2(0, SimpleInput.GetAxis(MouseY));
+        protected static Vector2 SimpleInputAxis()
+        {
+            return new Vector2(0, 0);
+            //return new Vector2(0, SimpleInput.GetAxis(MouseY));
+        }
     }
 }

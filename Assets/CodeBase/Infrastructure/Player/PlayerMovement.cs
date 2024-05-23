@@ -1,11 +1,11 @@
 using CodeBase.Service;
-using Photon.Pun;
+using Mirror;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : NetworkBehaviour
     {
         private const string Vertical = "Vertical";
         
@@ -23,33 +23,30 @@ namespace CodeBase.Infrastructure.Player
 
         private void Start()
         {
-            PhotonNetwork.SendRate = 60;
-            PhotonNetwork.SerializationRate = 5;
-            
             _rigidbody = GetComponent<Rigidbody2D>();
             _camera = Camera.main;
         }
 
         private void Update()
         {
-            if (GetComponent<PhotonView>().IsMine == true)
-            {
-
-                // if (_inputService.Axis.sqrMagnitude > 0.001f)
-                // {
-                //     _racketDirection = _camera.transform.TransformDirection(_inputService.Axis);
-                //     _racketDirection.x = 0;
-                // }
+            // if (_inputService.Axis.sqrMagnitude > 0.001f)
+            // {
+            //     _racketDirection = _camera.transform.TransformDirection(_inputService.Axis);
+            //     _racketDirection.x = 0;
+            // }
             
-                // _racketDirection = Vector2.zero;
-                // float directionY = Input.GetAxisRaw(Vertical);
-                // _racketDirection = new Vector2(0, directionY).normalized;
-                PlayerControl();
-            }
+            // _racketDirection = Vector2.zero;
+            // float directionY = Input.GetAxisRaw(Vertical);
+            // _racketDirection = new Vector2(0, directionY).normalized;
+            
+            PlayerControl();
         }
 
         private void FixedUpdate()
         {
+            if (!isLocalPlayer)
+                return;
+            
             _rigidbody.velocity = _racketDirection * _racketSpeed;
         }
 
