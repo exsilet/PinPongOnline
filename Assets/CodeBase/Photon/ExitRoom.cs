@@ -1,11 +1,11 @@
 ﻿using CodeBase.Infrastructure.LevelLogic;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
-using Photon.Pun;
+using UnityEngine;
 
 namespace CodeBase.Photon
 {
-    public class ExitRoom : MonoBehaviourPunCallbacks
+    public class ExitRoom : MonoBehaviour
     {
         private const string MenuScene = "MenuScene";
         private IGameStateMachine _stateMachine;
@@ -17,12 +17,12 @@ namespace CodeBase.Photon
         
         public void LeaveRoom()
         {
-            PhotonNetwork.LeaveRoom();
+            //PhotonNetwork.LeaveRoom();
         }
 
-        public override void OnLeftRoom()
+        public void OnLeftRoom()
         {
-            base.OnLeftRoom();
+            //base.OnLeftRoom();
             
             _stateMachine.Enter<LoadMenuState, string>(MenuScene);
         }

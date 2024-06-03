@@ -3,7 +3,6 @@ using CodeBase.Infrastructure.Ball;
 using CodeBase.Infrastructure.Player;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.UI;
-using Photon.Pun;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure
@@ -61,16 +60,20 @@ namespace CodeBase.Infrastructure
 
         public GameObject CreateHero(PlayerStaticData staticData, SkillStaticData skillData)
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                CreateBall();
-                
-                return PlayerCreation(staticData, skillData, AssetPath.Spawner, AssetPath.HudBattlePlayer1Path);
-            }
-            else
-            { 
-               return PlayerCreation(staticData, skillData, AssetPath.Spawner1, AssetPath.HudBattlePlayer2Path);
-            }
+            CreateBall();
+            
+            return PlayerCreation(staticData, skillData, AssetPath.Spawner, AssetPath.HudBattlePlayer1Path);
+            
+            // if (PhotonNetwork.IsMasterClient)
+            // {
+            //     CreateBall();
+            //     
+            //     return PlayerCreation(staticData, skillData, AssetPath.Spawner, AssetPath.HudBattlePlayer1Path);
+            // }
+            // else
+            // { 
+            //    return PlayerCreation(staticData, skillData, AssetPath.Spawner1, AssetPath.HudBattlePlayer2Path);
+            // }
         }
 
         public GameObject CreateHeroOffline(PlayerStaticData staticData, SkillStaticData skillData)

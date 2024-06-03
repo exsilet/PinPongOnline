@@ -1,21 +1,20 @@
-using System;
 using CodeBase.Infrastructure.Player;
 using CodeBase.Infrastructure.UI;
-using Photon.Pun;
+using Fusion;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace CodeBase.Infrastructure.Ball
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class BallMovet : MonoBehaviourPun
+    public class BallMovet : NetworkBehaviour
     {
         [SerializeField] private float _startSpeed = 6;
         [SerializeField] private float _extraSpeed;
         [SerializeField] private int _maxSpeed;
         [SerializeField] private int _fireSpeed;
         [SerializeField] private int _swiperSpeed;
-        [SerializeField] private PhotonView _photonView;
+        //[SerializeField] private PhotonView _photonView;
 
         private Rigidbody2D _rigidbody;
         private float _currentSpeed;
@@ -26,14 +25,14 @@ namespace CodeBase.Infrastructure.Ball
         public void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _photonView = GetComponent<PhotonView>();
+            //_photonView = GetComponent<PhotonView>();
 
             _startPosition = _rigidbody.position;
 
             StartMove();
 
-            if (_photonView.IsMine)
-                _photonView.RPC(nameof(SyncBallStart), RpcTarget.All, _rigidbody.position, _rigidbody.velocity);
+            // if (_photonView.IsMine)
+            //     _photonView.RPC(nameof(SyncBallStart), RpcTarget.All, _rigidbody.position, _rigidbody.velocity);
         }
 
         public void FixedUpdate()
@@ -48,8 +47,8 @@ namespace CodeBase.Infrastructure.Ball
                 _rigidbody.velocity = _goalDirection * _currentSpeed;
                 _ballInGoal = false;
 
-                if (_photonView.IsMine)
-                    photonView.RPC(nameof(SyncBallLaunchInGoalDirection), RpcTarget.AllBuffered, _rigidbody.velocity);
+                // if (_photonView.IsMine)
+                //     photonView.RPC(nameof(SyncBallLaunchInGoalDirection), RpcTarget.AllBuffered, _rigidbody.velocity);
             }
         }
 
@@ -64,8 +63,8 @@ namespace CodeBase.Infrastructure.Ball
 
                 _rigidbody.velocity = reflectDirection * _currentSpeed;
 
-                if (_photonView.IsMine)
-                    _photonView.RPC(nameof(SyncBallReflection), RpcTarget.All, _rigidbody.velocity);
+                // if (_photonView.IsMine)
+                //     _photonView.RPC(nameof(SyncBallReflection), RpcTarget.All, _rigidbody.velocity);
             }
 
             if (collision.gameObject.GetComponent<ScoreEnemy>())
@@ -78,18 +77,18 @@ namespace CodeBase.Infrastructure.Ball
             }
         }
 
-        [PunRPC]
-        private void SyncBallStart(Vector2 position, Vector2 velocity)
-        {
-            _rigidbody.position = position;
-            _rigidbody.velocity = velocity;
-        }
+        // [PunRPC]
+        // private void SyncBallStart(Vector2 position, Vector2 velocity)
+        // {
+        //     _rigidbody.position = position;
+        //     _rigidbody.velocity = velocity;
+        // }
 
-        [PunRPC]
-        private void SyncBallLaunchInGoalDirection(Vector2 launchDirection)
-        {
-            _rigidbody.velocity = launchDirection;
-        }
+        // [PunRPC]
+        // private void SyncBallLaunchInGoalDirection(Vector2 launchDirection)
+        // {
+        //     _rigidbody.velocity = launchDirection;
+        // }
 
         private void StartMove()
         {
@@ -98,11 +97,11 @@ namespace CodeBase.Infrastructure.Ball
             _currentSpeed = _startSpeed;
         }
 
-        [PunRPC]
-        private void SyncBallReflection(Vector2 velocity)
-        {
-            _rigidbody.velocity = velocity;
-        }
+        // [PunRPC]
+        // private void SyncBallReflection(Vector2 velocity)
+        // {
+        //     _rigidbody.velocity = velocity;
+        // }
 
         private void ResetBall()
         {
@@ -113,15 +112,15 @@ namespace CodeBase.Infrastructure.Ball
             _rigidbody.position = _startPosition;
             _rigidbody.velocity = Vector2.zero;
 
-            if (_photonView.IsMine)
-                photonView.RPC(nameof(SyncBallResetPosition), RpcTarget.AllBuffered, _rigidbody.position);
+            // if (_photonView.IsMine)
+            //     photonView.RPC(nameof(SyncBallResetPosition), RpcTarget.AllBuffered, _rigidbody.position);
         }
 
-        [PunRPC]
-        private void SyncBallResetPosition(Vector2 position)
-        {
-            _rigidbody.position = position;
-        }
+        // [PunRPC]
+        // private void SyncBallResetPosition(Vector2 position)
+        // {
+        //     _rigidbody.position = position;
+        // }
 
         public void SkillFire()
         {

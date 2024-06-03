@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cat
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: b76446236559e4a7ebfbdc6519fa9d07, type: 3}
-  Prefab: {fileID: 5733094012825286141, guid: fa25c9075476a114f91c59ca9815d896, type: 3}
-  PlayerTypeId: 5
+  Prefab: {fileID: 2837982167684996288, guid: fe442b63c554bd042a1813b857c03c7d, type: 3}
+  PlayerTypeId: 0
   SkillData: {fileID: 11400000, guid: a3410bf20aab932488b141ebebe90c38, type: 2}

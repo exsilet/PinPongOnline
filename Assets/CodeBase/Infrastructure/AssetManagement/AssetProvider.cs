@@ -1,5 +1,4 @@
-﻿using Photon.Pun;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CodeBase.Infrastructure.AssetManagement
 {
@@ -28,21 +27,24 @@ namespace CodeBase.Infrastructure.AssetManagement
         {
             var prefab = Resources.Load<GameObject>(path);
             var prefabPosition = Resources.Load<GameObject>(pathPosition);
-            return PhotonNetwork.Instantiate(prefab.name, prefabPosition.transform.position, Quaternion.identity);
+            return prefab;
+            //return PhotonNetwork.Instantiate(prefab.name, prefabPosition.transform.position, Quaternion.identity);
         }
         
         public GameObject InstantiatePhoton(string path)
         {
             var prefab = Resources.Load<GameObject>(path);
             Vector2 transformPosition = new Vector2(0, 0);
-            return PhotonNetwork.Instantiate(prefab.name, transformPosition, Quaternion.identity);
+            return prefab;
+            //return PhotonNetwork.Instantiate(prefab.name, transformPosition, Quaternion.identity);
         }
         
         public GameObject InstantiatePhotonRoom(string path, string pathPosition)
         {
             var prefab = Resources.Load<GameObject>(path);
             var prefabPosition = Resources.Load<GameObject>(pathPosition);
-            return PhotonNetwork.InstantiateRoomObject(prefab.name, prefabPosition.transform.position, Quaternion.identity);
+            return prefab;
+            //return PhotonNetwork.InstantiateRoomObject(prefab.name, prefabPosition.transform.position, Quaternion.identity);
         }
     }
 }

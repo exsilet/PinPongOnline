@@ -1,10 +1,10 @@
-using Photon.Pun;
+using Fusion;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerMovement : MonoBehaviourPun
+    public class PlayerMovement : NetworkBehaviour
     {
         private const string Vertical = "Vertical";
 
@@ -19,28 +19,52 @@ namespace CodeBase.Infrastructure.Player
 
         private void Start()
         {
-            PhotonNetwork.SendRate = 20;
-            PhotonNetwork.SerializationRate = 15;
+            // PhotonNetwork.SendRate = 20;
+            // PhotonNetwork.SerializationRate = 15;
 
             _rigidbody = GetComponent<Rigidbody2D>();
             _camera = Camera.main;
             
-            photonView.RPC(nameof(SyncPlayerMovement), RpcTarget.AllBuffered, _rigidbody.position, _rigidbody.velocity);
+            //photonView.RPC(nameof(SyncPlayerMovement), RpcTarget.AllBuffered, _rigidbody.position, _rigidbody.velocity);
+        }
+
+        public override void FixedUpdateNetwork()
+        {
+            if (HasStateAuthority == false)
+                return;
+
+            if (Application.isMobilePlatform)
+            {
+                ControlInput();
+            }
+            else
+            {
+                PlayerControl();
+            }
         }
 
         private void Update()
         {
-            if (GetComponent<PhotonView>().IsMine)
-            {
-                if (Application.isMobilePlatform)
-                {
-                    ControlInput();
-                }
-                else
-                {
-                    PlayerControl();
-                }
-            }
+            // if (Application.isMobilePlatform)
+            // {
+            //     ControlInput();
+            // }
+            // else
+            // {
+            //     PlayerControl();
+            // }
+            
+            // if (GetComponent<PhotonView>().IsMine)
+            // {
+            //     if (Application.isMobilePlatform)
+            //     {
+            //         ControlInput();
+            //     }
+            //     else
+            //     {
+            //         PlayerControl();
+            //     }
+            // }
         }
 
         private void FixedUpdate()
@@ -70,11 +94,11 @@ namespace CodeBase.Infrastructure.Player
             _racketDirection = new Vector2(0, Input.GetAxisRaw(Vertical));
         }
         
-        [PunRPC]
-        private void SyncPlayerMovement(Vector2 position, Vector2 velocity)
-        {
-            _rigidbody.position = position;
-            _rigidbody.velocity = velocity;
-        }
+        // [PunRPC]
+        // private void SyncPlayerMovement(Vector2 position, Vector2 velocity)
+        // {
+        //     _rigidbody.position = position;
+        //     _rigidbody.velocity = velocity;
+        // }
     }
 }

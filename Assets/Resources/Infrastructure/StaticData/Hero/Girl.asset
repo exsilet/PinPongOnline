@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 7135d585f82ae408d8713917af908381, type: 3}
   Prefab: {fileID: 2837982167684996288, guid: fe442b63c554bd042a1813b857c03c7d, type: 3}
-  PlayerTypeId: 1
+  PlayerTypeId: 0
   SkillData: {fileID: 11400000, guid: 0b95bffa4fa1a864aa604f4c95712ed4, type: 2}

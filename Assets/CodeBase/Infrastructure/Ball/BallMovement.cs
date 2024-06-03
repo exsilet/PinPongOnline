@@ -1,67 +1,75 @@
-﻿using System.Collections;
-using Photon.Pun;
+﻿using CodeBase.Infrastructure.Player;
+using CodeBase.Infrastructure.UI;
+using Fusion;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Ball
 {
-    public class BallMovement : MonoBehaviour
+    public class BallMovement : NetworkBehaviour
     {
-        [SerializeField] private int _startSpeed;
-        [SerializeField] private int _extraSpeed;
+        [SerializeField] private float _startSpeed = 6;
+        [SerializeField] private float _extraSpeed;
         [SerializeField] private int _maxSpeed;
-
-        private int _hitCounter = 0;
+        
+        private float _currentSpeed;
+        private bool _ballInGoal = false;
         private Rigidbody2D _rigidbody;
-        private bool _player1Start;
-        private readonly float _startPosition = -1.2f;
-
-        public bool PlayerStart
-        {
-            get => _player1Start;
-            set => _player1Start = value;
-        }
+        private Vector2 _startPosition;
+        private Vector2 _goalDirection;
 
         private void Start()
         {
-            PhotonNetwork.SendRate = 20;
-            PhotonNetwork.SerializationRate = 15;
-            
             _rigidbody = GetComponent<Rigidbody2D>();
-
-            StartCoroutine(Launch());
+            _currentSpeed = _startSpeed;
+            _startPosition = _rigidbody.position;
         }
 
-        public void IncreaseHitCounter()
+        private void Update()
         {
-            if (_hitCounter * _extraSpeed < _maxSpeed)
+            if (_ballInGoal)
             {
-                _hitCounter++;
+                ResetBall();
             }
         }
 
-        private void RestartBall()
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            _rigidbody.velocity = new Vector2(0, 0);
-            transform.position = new Vector2(0, _startPosition);
+            if (collision.gameObject.GetComponent<PlayerMovement>())
+            {
+                _currentSpeed += _extraSpeed;
+            }
         }
 
-        public void MoveBoll(Vector2 direction)
+        private void OnTriggerEnter2D(Collider2D col)
         {
-            direction = direction.normalized;
-
-            float bollSpeed = _startSpeed + _hitCounter * _extraSpeed;
-
-            _rigidbody.velocity = direction * bollSpeed;
+            if (col.gameObject.GetComponent<ScoreEnemy>())
+            {
+                GoalBall(col);
+            }
+            else if (col.gameObject.GetComponent<ScorePlayer>())
+            {
+                GoalBall(col);
+            }
         }
 
-        public IEnumerator Launch()
+        private void GoalBall(Collider2D col)
         {
-            RestartBall();
-            _hitCounter = 0;
+            _ballInGoal = true;
+            _goalDirection = col.gameObject.transform.position - transform.position;
+            _rigidbody.velocity = _goalDirection.normalized * _startSpeed;
+        }
 
-            yield return new WaitForSeconds(2);
+        private void ResetBall()
+        {
+            transform.position = _startPosition;
+            _rigidbody.velocity = Vector3.zero;
+            Invoke("LaunchBall", 2f);
+        }
 
-            MoveBoll(_player1Start ? new Vector2(1, 0) : new Vector2(-1, 0));
+        private void LaunchBall()
+        {
+            _rigidbody.velocity = _goalDirection.normalized * _startSpeed;
+            _ballInGoal = false;
         }
     }
 }

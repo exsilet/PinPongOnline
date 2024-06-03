@@ -5,14 +5,12 @@ using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.States;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.UI;
-using Photon.Pun;
-using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 
 namespace CodeBase.Photon
 {
-    public class StartServer : MonoBehaviourPunCallbacks
+    public class StartServer : MonoBehaviour
     {
         [SerializeField] private byte _maxPlayer;
         [SerializeField] private TMP_Text _connectionStatus;
@@ -29,7 +27,7 @@ namespace CodeBase.Photon
 
         private void Awake()
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
+            //PhotonNetwork.AutomaticallySyncScene = true;
             _stateMachine = AllServices.Container.Single<IGameStateMachine>();
         }
 
@@ -42,8 +40,8 @@ namespace CodeBase.Photon
         private void ConnectToPhotonServer()
         {
             _connectionStatus.text = "Connecting...";
-            PhotonNetwork.GameVersion = "1";
-            PhotonNetwork.ConnectUsingSettings();
+            // PhotonNetwork.GameVersion = "1";
+            // PhotonNetwork.ConnectUsingSettings();
         }
         
         public void SetPlayerData(PlayerStaticData staticData)
@@ -52,9 +50,9 @@ namespace CodeBase.Photon
             Debug.Log(" change player ");
         }
 
-        public override void OnConnected()
+        public void OnConnected()
         {
-            base.OnConnected();
+            //base.OnConnected();
 
             _connectionStatus.text = "Connected to Photon!";
             _connectionStatus.color = Color.green;
@@ -62,41 +60,41 @@ namespace CodeBase.Photon
         
         public void QuickMatch()
         {
-            PhotonNetwork.JoinRandomRoom();
+            //PhotonNetwork.JoinRandomRoom();
         }
 
-        public override void OnConnectedToMaster()
+        public void OnConnectedToMaster()
         {
             Debug.Log("Connected to master");
         }
         
         private void CreateRoom()
         {
-            if (PhotonNetwork.IsConnected)
-            {
-                PhotonNetwork.LocalPlayer.NickName = _playerName;
-                RoomOptions roomOptions = new RoomOptions()
-                {
-                    CleanupCacheOnLeave = false,
-                    MaxPlayers = _maxPlayer
-                };
-
-                if (roomOptions.MaxPlayers >= _maxPlayer)
-                {
-                    PhotonNetwork.CreateRoom(null, roomOptions);
-                }
-            }
+            // if (PhotonNetwork.IsConnected)
+            // {
+            //     PhotonNetwork.LocalPlayer.NickName = _playerName;
+            //     RoomOptions roomOptions = new RoomOptions()
+            //     {
+            //         CleanupCacheOnLeave = false,
+            //         MaxPlayers = _maxPlayer
+            //     };
+            //
+            //     if (roomOptions.MaxPlayers >= _maxPlayer)
+            //     {
+            //         PhotonNetwork.CreateRoom(null, roomOptions);
+            //     }
+            // }
         }
         
-        public override void OnJoinRandomFailed(short returnCode, string message)
+        public void OnJoinRandomFailed(short returnCode, string message)
         {
             CreateRoom();
         }
         
-        public override void OnJoinedRoom()
+        public void OnJoinedRoom()
         {
-            PhotonNetwork.SendRate = 60;
-            PhotonNetwork.SerializationRate = 60;
+            // PhotonNetwork.SendRate = 60;
+            // PhotonNetwork.SerializationRate = 60;
             
             Debug.Log("Connected to room");
             StartCoroutine(ActivePlayer());
@@ -104,13 +102,14 @@ namespace CodeBase.Photon
         
         private IEnumerator ActivePlayer()
         {
-            while (PhotonNetwork.CurrentRoom.PlayerCount != _maxPlayer)
-            {
-                SearchTime();
-                yield return null;
-            }
+            // while (PhotonNetwork.CurrentRoom.PlayerCount != _maxPlayer)
+            // {
+            //     SearchTime();
+            //     yield return null;
+            // }
             
             EnterTowPlayers();
+            yield return null;
         }
 
         private void EnterTowPlayers()
