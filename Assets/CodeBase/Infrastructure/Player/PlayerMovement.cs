@@ -1,11 +1,10 @@
-using CodeBase.Service;
 using Photon.Pun;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviourPun
     {
         private const string Vertical = "Vertical";
 
@@ -16,13 +15,7 @@ namespace CodeBase.Infrastructure.Player
 
         private Rigidbody2D _rigidbody;
         private Vector2 _racketDirection;
-        private IInputService _inputService;
         private Camera _camera;
-
-        private void Awake()
-        {
-            _inputService = Game.InputService;
-        }
 
         private void Start()
         {
@@ -31,6 +24,8 @@ namespace CodeBase.Infrastructure.Player
 
             _rigidbody = GetComponent<Rigidbody2D>();
             _camera = Camera.main;
+            
+            photonView.RPC(nameof(SyncPlayerMovement), RpcTarget.AllBuffered, _rigidbody.position, _rigidbody.velocity);
         }
 
         private void Update()
@@ -73,6 +68,13 @@ namespace CodeBase.Infrastructure.Player
         private void PlayerControl()
         {
             _racketDirection = new Vector2(0, Input.GetAxisRaw(Vertical));
+        }
+        
+        [PunRPC]
+        private void SyncPlayerMovement(Vector2 position, Vector2 velocity)
+        {
+            _rigidbody.position = position;
+            _rigidbody.velocity = velocity;
         }
     }
 }

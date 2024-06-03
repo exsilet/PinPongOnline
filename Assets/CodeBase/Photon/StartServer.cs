@@ -119,7 +119,7 @@ namespace CodeBase.Photon
             //SceneManager.LoadScene(_sceneIndex);
             _stateMachine.Enter<LoadLevelState, string>(GameScene, _playerData, _skillData);
         }
-
+        
         private void SearchTime()
         {
             _panel.SetActive(true);

@@ -53,5 +53,11 @@ namespace CodeBase.Infrastructure.LevelLogic
         {
             GameObject hero = _gameFactory.CreateHero(playerData, skillData);
         }
+        
+        private void CreateOffline(PlayerStaticData playerData, SkillStaticData skillData, PlayerStaticData botData)
+        {
+            GameObject hero2 = _gameFactory.CreateBot(botData, botData.SkillData);
+            GameObject hero1 = _gameFactory.CreateHeroOffline(playerData, skillData);
+        } 
     }
 }

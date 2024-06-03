@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1915c85aee8b4f5e82d31ae7a2d9563a, type: 3}
-  m_Name: SkillData 1
+  m_Script: {fileID: 11500000, guid: 7541b90e2b3e4252b662cad350891eea, type: 3}
+  m_Name: DirectBlow
   m_EditorClassIdentifier: 
-  UIIcon: {fileID: 21300000, guid: b3d8dbe835c404179842f9f9595f2bf0, type: 3}
-  Label: 
-  Description: 
-  Price: 20
+  UIIcon: {fileID: 21300000, guid: c3189121f7e3342a3b2fcc2f495c9e31, type: 3}
+  Label: Direct Blow
+  Description: strong blow in a straight line
+  Price: 0
   _count: 1
-  Type: 0
+  CooldownTime: 2
+  Type: 4
   IsDefault: 1
   IsByu: 1

@@ -1440,7 +1440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 3804660041452922782}
   _icon2: {fileID: 8905874386661159611}
-  _defaultPlayerData: {fileID: 11400000, guid: f5471c9be79b83b429f3d7dabbb3e45d, type: 2}
+  _defaultPlayerData: {fileID: 11400000, guid: 143db3ba7fa2d39468ed08517aea679e, type: 2}
   _inventory: {fileID: 760706682903905176}
   _openPanelStatic: {fileID: 9089831467849038390}
   _openPanelStatic2: {fileID: 2224981785275538086}
@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b4e70bca244da49dbf3b09926eae36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxPlayer: 2
+  _maxPlayer: 1
   _connectionStatus: {fileID: 4854946873648755047}
   _timerStart: 0
   _textTimer: {fileID: 5017470643876201960}

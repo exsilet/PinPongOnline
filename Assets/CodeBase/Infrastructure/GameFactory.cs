@@ -73,13 +73,28 @@ namespace CodeBase.Infrastructure
             }
         }
 
+        public GameObject CreateHeroOffline(PlayerStaticData staticData, SkillStaticData skillData)
+        {
+           return PlayerCreation(staticData, skillData, AssetPath.Spawner, AssetPath.HudBattlePlayer1Path);
+        }
+
+        public GameObject CreateBot(PlayerStaticData staticData, SkillStaticData skillData)
+        {
+            Hero2 = CreatePhotonHero(staticData.Prefab.name, AssetPath.Spawner1);
+            var hud = CreateHudBattle(AssetPath.HudBattlePlayer2Path, staticData, skillData, Ball, Hero2);
+            ConstructEnemy(Hero2, staticData, hud);
+            hud.GetComponent<Canvas>().enabled = false;
+
+            return Hero2;
+        }
+
         private GameObject PlayerCreation(PlayerStaticData staticData, SkillStaticData skillData, string spawnerPlayer, string path)
         {
             Hero1 = CreatePhotonHero(staticData.Prefab.name, spawnerPlayer);
 
-            var hud = CreateHudBattle(path, staticData, skillData);
+            var hud = CreateHudBattle(path, staticData, skillData, Ball, Hero1);
 
-            Construct(Hero1, staticData, hud);
+            Construct(Hero1, staticData, Ball);
 
             return Hero1;
         }
@@ -97,18 +112,23 @@ namespace CodeBase.Infrastructure
             return photonObject;
         }
 
-        private GameObject CreateHudBattle(string path, PlayerStaticData staticData, SkillStaticData skillData)
+        private GameObject CreateHudBattle(string path, PlayerStaticData staticData, SkillStaticData skillData, GameObject ball, GameObject hero)
         {
             GameObject hud = _assets.Instantiate(path);
             
-            hud.GetComponent<ActiveSkillPanel>().Construct(staticData, skillData);
+            hud.GetComponent<ActiveSkillPanel>().Construct(staticData, skillData, ball.GetComponent<BallMovet>(), hero.GetComponent<Fighter>());
 
             return hud;
         }
 
-        private void Construct(GameObject hero, PlayerStaticData staticData, GameObject hud)
+        private void Construct(GameObject hero, PlayerStaticData staticData, GameObject ball)
         {
-            hero.GetComponent<Fighter>().Construct(staticData);
+            hero.GetComponent<Fighter>().Construct(staticData, ball.GetComponent<BallMovet>());
+        }
+        
+        private void ConstructEnemy(GameObject hero, PlayerStaticData staticData, GameObject hud)
+        {
+            
         }
     }
 }

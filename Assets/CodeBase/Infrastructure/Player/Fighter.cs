@@ -1,32 +1,120 @@
-﻿using CodeBase.Infrastructure.StaticData;
-using Photon.Pun;
+﻿using CodeBase.Infrastructure.Ball;
+using CodeBase.Infrastructure.StaticData;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Player
 {
-    [RequireComponent(typeof(PhotonView))]
-    [RequireComponent(typeof(PlayerMoney))]
     public class Fighter : MonoBehaviour
     {
         [SerializeField] private PlayerMoney _playerMoney;
+        [SerializeField] private Transform _targetActivatedMirror;
+        [SerializeField] private Transform _targetCenter;
         
         private Inventory _inventory;
-        private PhotonView _photonView;
+        private BallMovet _ball;
         private PlayerStaticData _playerData;
         private SkillStaticData _skillPlayerData;
         private SkillStaticData _skillData;
+        private float _targetPosition = 4.3f;
+        private float _ballPosition;
+        private float _mirrorPosition;
+        private bool _touched;
+        private bool _activatedMirror;
+        public GameObject TargetPosition => _targetActivatedMirror.gameObject;
+        public bool TouchedPlayer => _touched;
+        public bool ActivatedSkill => _activatedMirror;
+        public bool PositionRight;
+        public GameObject mirrorActive;
         
-        public PhotonView PhotonView => _photonView;
-
-        public void Construct(PlayerStaticData data)
+        
+        public void Construct(PlayerStaticData data, BallMovet ball)
         {
             _playerData = data;
             _skillPlayerData = data.SkillData;
+            _ball = ball;
         }
         
         private void Start()
         {
-            _photonView ??= GetComponent<PhotonView>();
+            if (transform.position.x > 0)
+            {
+                SwapPosition(_targetActivatedMirror, _targetActivatedMirror.localPosition.x);
+                SwapPositionCenter(_targetCenter, _targetCenter.localPosition.x);
+            }
+
+            mirrorActive = _targetActivatedMirror.gameObject;
+            _mirrorPosition = _targetActivatedMirror.position.x;
+        }
+
+        private void Update()
+        {
+            _ballPosition = _ball.transform.position.x;
+
+            if (transform.position.x > 0)
+            {
+                MirrorRight();   
+                TouchedPlayerRight();
+            }
+            else
+            {
+                MirrorLeft();
+                TouchedPlayerLeft();
+            }
+
+        }
+
+        private void MirrorRight()
+        {
+            if (_skillPlayerData.Type == SkillTypeId.Mirror)
+            {
+                _activatedMirror = _ball.transform.position.x <= _targetActivatedMirror.position.x;
+            }
+        }
+        
+        private void MirrorLeft()
+        {
+            if (_skillPlayerData.Type == SkillTypeId.Mirror)
+            {
+                _activatedMirror = _ball.transform.position.x >= _targetActivatedMirror.position.x;
+            }
+        }
+
+        private void SwapPositionCenter(Transform target, float newPosition)
+        {
+            target.position = new Vector2(newPosition- target.localPosition.x, target.position.y);
+        }
+
+        private void SwapPosition(Transform target, float newPosition)
+        {
+            target.position = new Vector2(newPosition - target.localPosition.x - _targetPosition, target.position.y);
+        }
+
+        private void TouchedPlayerRight()
+        {
+            if (_ball.transform.position.x <= 0)
+            {
+                _touched = false;
+            }
+
+            PositionRight = false;
+        }
+
+        private void TouchedPlayerLeft()
+        {
+            if (_ball.transform.position.x >= 0)
+            {
+                _touched = false;
+            }
+            
+            PositionRight = true;
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.GetComponent<BallMovet>())
+            {
+                _touched = true;
+            }
         }
     }
 }
