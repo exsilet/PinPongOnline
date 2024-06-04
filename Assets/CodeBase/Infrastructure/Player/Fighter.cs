@@ -25,8 +25,7 @@ namespace CodeBase.Infrastructure.Player
         public bool ActivatedSkill => _activatedMirror;
         public bool PositionRight;
         public GameObject mirrorActive;
-        
-        
+
         public void Construct(PlayerStaticData data, BallMovet ball)
         {
             _playerData = data;
@@ -48,7 +47,7 @@ namespace CodeBase.Infrastructure.Player
 
         private void Update()
         {
-            _ballPosition = _ball.transform.position.x;
+            //_ballPosition = _ball.transform.position.x;
 
             if (transform.position.x > 0)
             {
@@ -65,7 +64,7 @@ namespace CodeBase.Infrastructure.Player
 
         private void MirrorRight()
         {
-            if (_skillPlayerData.Type == SkillTypeId.Mirror)
+            if (_skillPlayerData != null && _skillPlayerData.Type == SkillTypeId.Mirror)
             {
                 _activatedMirror = _ball.transform.position.x <= _targetActivatedMirror.position.x;
             }
@@ -73,7 +72,7 @@ namespace CodeBase.Infrastructure.Player
         
         private void MirrorLeft()
         {
-            if (_skillPlayerData.Type == SkillTypeId.Mirror)
+            if (_skillPlayerData != null && _skillPlayerData.Type == SkillTypeId.Mirror)
             {
                 _activatedMirror = _ball.transform.position.x >= _targetActivatedMirror.position.x;
             }
@@ -91,7 +90,7 @@ namespace CodeBase.Infrastructure.Player
 
         private void TouchedPlayerRight()
         {
-            if (_ball.transform.position.x <= 0)
+            if (_ball != null && _ball.transform.position.x <= 0)
             {
                 _touched = false;
             }
@@ -101,7 +100,7 @@ namespace CodeBase.Infrastructure.Player
 
         private void TouchedPlayerLeft()
         {
-            if (_ball.transform.position.x >= 0)
+            if (_ball != null && _ball.transform.position.x >= 0)
             {
                 _touched = false;
             }

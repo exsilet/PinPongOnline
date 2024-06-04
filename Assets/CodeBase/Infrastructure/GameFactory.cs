@@ -67,10 +67,8 @@ namespace CodeBase.Infrastructure
                 
                 return PlayerCreation(staticData, skillData, AssetPath.Spawner, AssetPath.HudBattlePlayer1Path);
             }
-            else
-            { 
-               return PlayerCreation(staticData, skillData, AssetPath.Spawner1, AssetPath.HudBattlePlayer2Path);
-            }
+            
+            return PlayerCreation(staticData, skillData, AssetPath.Spawner1, AssetPath.HudBattlePlayer2Path);
         }
 
         public GameObject CreateHeroOffline(PlayerStaticData staticData, SkillStaticData skillData)
@@ -115,15 +113,21 @@ namespace CodeBase.Infrastructure
         private GameObject CreateHudBattle(string path, PlayerStaticData staticData, SkillStaticData skillData, GameObject ball, GameObject hero)
         {
             GameObject hud = _assets.Instantiate(path);
-            
-            hud.GetComponent<ActiveSkillPanel>().Construct(staticData, skillData, ball.GetComponent<BallMovet>(), hero.GetComponent<Fighter>());
+
+            if (ball != null)
+            {
+                hud.GetComponent<ActiveSkillPanel>().Construct(staticData, skillData, ball.GetComponent<BallMovet>(), hero.GetComponent<Fighter>());
+            }
 
             return hud;
         }
 
         private void Construct(GameObject hero, PlayerStaticData staticData, GameObject ball)
         {
-            hero.GetComponent<Fighter>().Construct(staticData, ball.GetComponent<BallMovet>());
+            if (ball != null)
+            {
+                hero.GetComponent<Fighter>().Construct(staticData, ball.GetComponent<BallMovet>());
+            }
         }
         
         private void ConstructEnemy(GameObject hero, PlayerStaticData staticData, GameObject hud)

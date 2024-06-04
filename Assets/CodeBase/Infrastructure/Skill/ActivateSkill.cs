@@ -22,7 +22,7 @@ namespace CodeBase.Infrastructure.Skill
         private BallMovet _ball;
         private Fighter _fighter;
 
-        public GameObject mirrorActive;
+        private GameObject _mirrorActive;
 
         private void Start()
         {
@@ -57,7 +57,7 @@ namespace CodeBase.Infrastructure.Skill
                 _skill = skill;
                 _ball = ball;
                 _skillCooldown = skill.CooldownTime;
-                mirrorActive = mirror;
+                _mirrorActive = mirror;
             }
         }
 
@@ -69,7 +69,7 @@ namespace CodeBase.Infrastructure.Skill
             {
                 case SkillTypeId.Mirror:
                     //_skill.Activate(_ball.gameObject, _fighter.TargetPosition, _fighter.PositionRight);
-                    mirrorActive.SetActive(true);
+                    _mirrorActive.SetActive(true);
                     StartCooldown();
                     break;
             }

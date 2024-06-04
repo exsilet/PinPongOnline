@@ -18,6 +18,7 @@ namespace CodeBase.Infrastructure.Ball
         [SerializeField] private PhotonView _photonView;
 
         private Rigidbody2D _rigidbody;
+        private Rigidbody2D _rigidbodyPhoton;
         private float _currentSpeed;
         private Vector2 _startPosition;
         private Vector2 _goalDirection;
