@@ -141,7 +141,9 @@ GameObject:
   - component: {fileID: 5568952649693371419}
   - component: {fileID: 6119782910670354339}
   - component: {fileID: 1686271928485839057}
-  - component: {fileID: 2279403793662081186}
+  - component: {fileID: 5782729096671926309}
+  - component: {fileID: 1254430737153577132}
+  - component: {fileID: 3799931937968103224}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -197,7 +199,19 @@ MonoBehaviour:
   _targetCenter: {fileID: 374993233386853843}
   PositionRight: 0
   mirrorActive: {fileID: 0}
---- !u!114 &2279403793662081186
+--- !u!114 &5782729096671926309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2837982167684996288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b62d99f02b2424a87ee1b2734a1578c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1254430737153577132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,13 +223,26 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 2838379654
+  SortKey: 3683169906
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 5782729096671926309}
   - {fileID: 5926954841469587185}
-  - {fileID: 6731226850925190894}
+  - {fileID: 2170719325324902420}
+--- !u!114 &3799931937968103224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2837982167684996288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93009942cc746f4bac6730eb48d20a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4945944758512796863
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +399,7 @@ GameObject:
   - component: {fileID: 3194728449250032149}
   - component: {fileID: 3883811893210091733}
   - component: {fileID: 5926954841469587185}
-  - component: {fileID: 6731226850925190894}
+  - component: {fileID: 2170719325324902420}
   m_Layer: 0
   m_Name: Boy
   m_TagString: Untagged
@@ -535,7 +562,7 @@ MonoBehaviour:
   _swapPosition: 10
   _minPosition: -3.46
   _maxPosition: 1.14
---- !u!114 &6731226850925190894
+--- !u!114 &2170719325324902420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -544,10 +571,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5114424201519865061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Script: {fileID: 11500000, guid: c5e690b5fb1084f5ab1c86457af401d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncScale: 0
   SyncParent: 1
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  _interpolationTarget: {fileID: 0}
+  UsePreciseRotation: 0
+  UseRenderSleepThresholds: 1
+  RenderThresholds:
+    UseEnergy: 1
+    Position: 0.01
+    Rotation: 0.01
+    Scale: 0.01

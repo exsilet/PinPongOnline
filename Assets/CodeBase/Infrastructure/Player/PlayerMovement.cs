@@ -6,7 +6,7 @@ namespace CodeBase.Infrastructure.Player
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerMovement : NetworkBehaviour
     {
-        private const string Vertical = "Vertical";
+        //private const string Vertical = "Vertical";
 
         [SerializeField] private int _racketSpeed;
         [SerializeField] private int _swapPosition = 10;
@@ -19,9 +19,6 @@ namespace CodeBase.Infrastructure.Player
 
         private void Start()
         {
-            // PhotonNetwork.SendRate = 20;
-            // PhotonNetwork.SerializationRate = 15;
-
             _rigidbody = GetComponent<Rigidbody2D>();
             _camera = Camera.main;
             
@@ -30,17 +27,22 @@ namespace CodeBase.Infrastructure.Player
 
         public override void FixedUpdateNetwork()
         {
-            if (HasStateAuthority == false)
-                return;
+            // if (HasStateAuthority == false)
+            //     return;
 
-            if (Application.isMobilePlatform)
+            if (GetInput(out NetworkInputData data))
             {
-                ControlInput();
+                if (Application.isMobilePlatform)
+                {
+                    ControlInput();
+                }
+                else
+                {
+                    PlayerControl(data.Direction);
+                }
             }
-            else
-            {
-                PlayerControl();
-            }
+            
+            _rigidbody.velocity = _racketDirection * _racketSpeed;
         }
 
         private void Update()
@@ -67,11 +69,6 @@ namespace CodeBase.Infrastructure.Player
             // }
         }
 
-        private void FixedUpdate()
-        {
-            _rigidbody.velocity = _racketDirection * _racketSpeed;
-        }
-
         private void ControlInput()
         {
             foreach (Touch touch in Input.touches)
@@ -89,9 +86,10 @@ namespace CodeBase.Infrastructure.Player
             }
         }
 
-        private void PlayerControl()
+        private void PlayerControl(Vector2 direction)
         {
-            _racketDirection = new Vector2(0, Input.GetAxisRaw(Vertical));
+            _racketDirection = direction;
+            //_racketDirection = new Vector2(0, Input.GetAxisRaw(Vertical));
         }
         
         // [PunRPC]

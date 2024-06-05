@@ -39,7 +39,7 @@ namespace CodeBase.Photon
 
         private void ConnectToPhotonServer()
         {
-            _connectionStatus.text = "Connecting...";
+            //_connectionStatus.text = "Connecting...";
             // PhotonNetwork.GameVersion = "1";
             // PhotonNetwork.ConnectUsingSettings();
         }
@@ -61,6 +61,7 @@ namespace CodeBase.Photon
         public void QuickMatch()
         {
             //PhotonNetwork.JoinRandomRoom();
+            OnJoinedRoom();
         }
 
         public void OnConnectedToMaster()
