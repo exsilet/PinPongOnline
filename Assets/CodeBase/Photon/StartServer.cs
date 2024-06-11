@@ -103,7 +103,7 @@ namespace CodeBase.Photon
         
         private IEnumerator ActivePlayer()
         {
-            // while (PhotonNetwork.CurrentRoom.PlayerCount != _maxPlayer)
+            // while (FusionPlayer != _maxPlayer)
             // {
             //     SearchTime();
             //     yield return null;

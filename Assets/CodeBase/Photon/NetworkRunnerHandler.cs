@@ -14,23 +14,31 @@ namespace CodeBase.Photon
 
         private NetworkRunner _networkRunner;
 
+        private void Awake()
+        {
+            // var networkRunnerInScene = FindObjectOfType<NetworkRunner>();
+            //
+            // if (networkRunnerInScene != null) 
+            //     _networkRunner = networkRunnerInScene;
+        }
+
         private void Start()
         {
             _networkRunner = Instantiate(_networkRunnerPrefab);
             _networkRunner.name = "Network Runner";
 
-            if (SceneManager.GetActiveScene().name != "GameScene")
-            {
+            // if (SceneManager.GetActiveScene().name != "GameScene")
+            // {
                 Task clientTask = InitializeNetworkRunner(_networkRunner, GameMode.AutoHostOrClient, "TestSession",
                     NetAddress.Any(),
                     SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex), null);
-            }
+            //}
         }
 
         protected virtual Task InitializeNetworkRunner(NetworkRunner runner, GameMode gameMode, string sessionName,
             NetAddress address, SceneRef scene, Action<NetworkRunner> initialized)
         {
-            INetworkSceneManager sceneManager = runner.GetComponents(typeof(MonoBehaviour))
+            var sceneManager = runner.GetComponents(typeof(MonoBehaviour))
                 .OfType<INetworkSceneManager>()
                 .FirstOrDefault();
 
