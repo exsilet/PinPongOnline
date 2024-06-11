@@ -49,7 +49,7 @@ namespace CodeBase.Photon
         public void SetPlayerData(PlayerStaticData staticData)
         {
             _playerData = staticData;
-            Debug.Log(" change player ");
+            Debug.Log("1 change player ");
         }
 
         public override void OnConnected()

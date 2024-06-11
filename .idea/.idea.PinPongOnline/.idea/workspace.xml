@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95596d46-b3be-4568-b3b5-321c489cf718" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PUN2_PlayerSync.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PUN2_PlayerSync.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/Fighter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/Fighter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Ball.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/Inventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/OpenSkillView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/OpenSkillView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/PlayerSkin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/PlayerSkin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/Shop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/SkillView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/SkillView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/SkillViewPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/SkillViewPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/ViewActiveSkills.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/ViewActiveSkill.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/ViewActiveSkills.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/ViewActiveSkill.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Photon/StartServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Photon/StartServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Hud/HudMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Hud/HudMenu.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,12 +23,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/0a/31e67026/INetworkSceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/0c/3ea7edbb/NetworkInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/54/8676aa41/NetworkRunner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/69/572e798c/SimulationBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/cd/28274eb6/StartGameArgs.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/f2/c6207ec7/SceneRef.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30adf90198bc4c4b83910c6fb1877998174000/51/e5c5a502/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30adf90198bc4c4b83910c6fb1877998174000/80/be358d12/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30adf90198bc4c4b83910c6fb1877998174000/a2/a0426e93/Resources.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30adf90198bc4c4b83910c6fb1877998174000/b2/4c13b90b/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/327e4dadb97540c7a9ad0a98b2c5c10a20a00/43/c50d00c7/Rigidbody2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Catxorcizm/Assets/CodeBase/UI/Forms/ShopWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Catxorcizm/Assets/CodeBase/UI/Forms/UpgradeMinions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Catxorcizm/Assets/Sashka/Scripts/Minions/Eagle/FirstLvlTornado.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Catxorcizm/Assets/Sashka/Scripts/Minions/Missile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Catxorcizm/Assets/Sashka/Scripts/Minions/Mouse/FirstLvlArrow.cs" root0="SKIP_HIGHLIGHTING" />
@@ -35,6 +45,20 @@
     <setting file="file://$PROJECT_DIR$/../Fail2/Assets/Script/Weapon/EdgedWeapons.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Fail2/Assets/Script/Weapon/Firearms.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Fail2/Assets/Script/Weapon/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/GameController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/LocalPlayerData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Menu/NickNameGeneration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Menu/StartMenu.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/PlayerDataNetworked.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/SpaceshipInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/SpaceshipSpawner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/SpawnPoint.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/UI/PlayerOverviewPanel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/FusionHelpers/Launcher/FusionLauncher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/FusionHelpers/Launcher/FusionPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/FusionHelpers/Launcher/FusionSession.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/FusionHelpers/Pooling/LocalObjectPool.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/Scripts/Tanknarok/Player/Shot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Skill/MirrorActivated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Utilities/ComponentHolderProtocol.cs" root0="SKIP_HIGHLIGHTING" />

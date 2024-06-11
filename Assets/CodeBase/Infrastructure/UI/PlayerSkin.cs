@@ -1,6 +1,6 @@
-﻿using System;
-using CodeBase.Infrastructure.Player;
+﻿using CodeBase.Infrastructure.Player;
 using CodeBase.Infrastructure.StaticData;
+using CodeBase.Photon;
 using CodeBase.UIExtensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +16,7 @@ namespace CodeBase.Infrastructure.UI
         [SerializeField] private Inventory _inventory;
         [SerializeField] private Button _openPanelStatic;
         [SerializeField] private Button _openPanelStatic2;
+        [SerializeField] private StartServer _startServer;
         
         private PlayerStaticData _currentPlayerData;
         private PlayerPanelSkin _panelSkin;
@@ -62,6 +63,7 @@ namespace CodeBase.Infrastructure.UI
             _icon.sprite = data.Icon;
             _icon2.sprite = data.Icon;
             _inventory.Construct(data);
+            _startServer.SetPlayerData(data);
         }
 
         private void OnClick()

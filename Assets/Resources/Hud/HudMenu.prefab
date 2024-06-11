@@ -1444,6 +1444,7 @@ MonoBehaviour:
   _inventory: {fileID: 760706682903905176}
   _openPanelStatic: {fileID: 9089831467849038390}
   _openPanelStatic2: {fileID: 2224981785275538086}
+  _startServer: {fileID: 3835997276002350799}
 --- !u!114 &3835997276002350799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5182,7 +5183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb754a8dca5432ea41aea17532ecc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startServer: {fileID: 3835997276002350799}
   _skillViewPanel: {fileID: 2616497679717665872}
 --- !u!114 &2616497679717665872
 MonoBehaviour:
