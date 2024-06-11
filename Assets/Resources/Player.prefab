@@ -195,7 +195,6 @@ MonoBehaviour:
   _targetActivatedMirror: {fileID: 8154915636456979745}
   _targetCenter: {fileID: 374993233386853843}
   PositionRight: 0
-  mirrorActive: {fileID: 0}
 --- !u!1 &4945944758512796863
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,8 +351,8 @@ GameObject:
   - component: {fileID: 3194728449250032149}
   - component: {fileID: 3883811893210091733}
   - component: {fileID: 7983546059866947145}
-  - component: {fileID: 5163219705677873134}
   - component: {fileID: 5926954841469587185}
+  - component: {fileID: 3218291300305841144}
   m_Layer: 0
   m_Name: Boy
   m_TagString: Untagged
@@ -519,26 +518,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 5163219705677873134}
+  - {fileID: 3218291300305841144}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &5163219705677873134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5114424201519865061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 0
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!114 &5926954841469587185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,3 +538,17 @@ MonoBehaviour:
   _swapPosition: 10
   _minPosition: -3.46
   _maxPosition: 1.14
+--- !u!114 &3218291300305841144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5114424201519865061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c50da0eb12d489db48beead8b50cd4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localScripts:
+  - {fileID: 5926954841469587185}

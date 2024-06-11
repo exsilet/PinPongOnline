@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 namespace CodeBase.Infrastructure.Ball
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class BallMovet : MonoBehaviourPun
+    public class BallMovet : MonoBehaviourPun, IPunObservable
     {
         [SerializeField] private float _startSpeed = 6;
         [SerializeField] private float _extraSpeed;
@@ -18,11 +18,13 @@ namespace CodeBase.Infrastructure.Ball
         [SerializeField] private PhotonView _photonView;
 
         private Rigidbody2D _rigidbody;
-        private Rigidbody2D _rigidbodyPhoton;
         private float _currentSpeed;
         private Vector2 _startPosition;
         private Vector2 _goalDirection;
+        private Vector2 _reflectDirection;
         private bool _ballInGoal = false;
+        
+        private bool _valuesReceived = false;
 
         public void Start()
         {
@@ -30,11 +32,13 @@ namespace CodeBase.Infrastructure.Ball
             _photonView = GetComponent<PhotonView>();
 
             _startPosition = _rigidbody.position;
-
+            
+            
+            //Invoke("StartMove", 2f);
             StartMove();
 
             if (_photonView.IsMine)
-                _photonView.RPC(nameof(SyncBallStart), RpcTarget.All, _rigidbody.position, _rigidbody.velocity);
+                _photonView.RPC(nameof(SyncBallStart), RpcTarget.AllBuffered, _rigidbody.position, _rigidbody.velocity);
         }
 
         public void FixedUpdate()
@@ -58,15 +62,15 @@ namespace CodeBase.Infrastructure.Ball
         {
             if (collision.gameObject.GetComponent<PlayerMovement>())
             {
-                Vector2 reflectDirection =
+                _reflectDirection =
                     Vector2.Reflect(_rigidbody.velocity, collision.contacts[0].normal).normalized;
 
                 _currentSpeed += _extraSpeed;
 
-                _rigidbody.velocity = reflectDirection * _currentSpeed;
+                _rigidbody.velocity = _reflectDirection * _currentSpeed;
 
                 if (_photonView.IsMine)
-                    _photonView.RPC(nameof(SyncBallReflection), RpcTarget.All, _rigidbody.velocity);
+                    _photonView.RPC(nameof(SyncBallReflection), RpcTarget.AllBuffered, _rigidbody.velocity);
             }
 
             if (collision.gameObject.GetComponent<ScoreEnemy>())
@@ -134,6 +138,27 @@ namespace CodeBase.Infrastructure.Ball
             _currentSpeed = _swiperSpeed;
             Vector2 forwardDirection = new Vector2( direction, 0);
             _rigidbody.velocity = forwardDirection * _currentSpeed;
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(transform.position);
+                stream.SendNext(transform.rotation);
+                stream.SendNext(_rigidbody.velocity);
+                stream.SendNext(_rigidbody.angularVelocity);
+            }
+            else
+            {
+                _startPosition = (Vector2)stream.ReceiveNext();
+                _goalDirection = (Vector2)stream.ReceiveNext();
+                _reflectDirection = (Vector2)stream.ReceiveNext();
+                _rigidbody.velocity = (Vector2)stream.ReceiveNext();
+                _rigidbody.angularVelocity = (float)stream.ReceiveNext();
+
+                _valuesReceived = true;
+            }
         }
     }
 }

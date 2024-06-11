@@ -15,6 +15,7 @@ namespace CodeBase.Infrastructure.Player
         private PlayerStaticData _playerData;
         private SkillStaticData _skillPlayerData;
         private SkillStaticData _skillData;
+        private GameObject _mirrorActive;
         private float _targetPosition = 4.3f;
         private float _ballPosition;
         private float _mirrorPosition;
@@ -24,7 +25,6 @@ namespace CodeBase.Infrastructure.Player
         public bool TouchedPlayer => _touched;
         public bool ActivatedSkill => _activatedMirror;
         public bool PositionRight;
-        public GameObject mirrorActive;
 
         public void Construct(PlayerStaticData data, BallMovet ball)
         {
@@ -41,7 +41,7 @@ namespace CodeBase.Infrastructure.Player
                 SwapPositionCenter(_targetCenter, _targetCenter.localPosition.x);
             }
 
-            mirrorActive = _targetActivatedMirror.gameObject;
+            _mirrorActive = _targetActivatedMirror.gameObject;
             _mirrorPosition = _targetActivatedMirror.position.x;
         }
 

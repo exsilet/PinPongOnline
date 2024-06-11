@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CodeBase.Infrastructure.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerMovement : MonoBehaviourPun
+    public class PlayerMovement : MonoBehaviour
     {
         private const string Vertical = "Vertical";
 
@@ -25,7 +25,7 @@ namespace CodeBase.Infrastructure.Player
             _rigidbody = GetComponent<Rigidbody2D>();
             _camera = Camera.main;
             
-            photonView.RPC(nameof(SyncPlayerMovement), RpcTarget.AllBuffered, _rigidbody.position, _rigidbody.velocity);
+            //photonView.RPC(nameof(SyncPlayerMovement), RpcTarget.AllBuffered, _rigidbody.position, _rigidbody.velocity);
         }
 
         private void Update()
@@ -76,5 +76,23 @@ namespace CodeBase.Infrastructure.Player
             _rigidbody.position = position;
             _rigidbody.velocity = velocity;
         }
+
+        // public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        // {
+        //     if (stream.IsWriting)
+        //     {
+        //         stream.SendNext(transform.position);
+        //         stream.SendNext(transform.rotation);
+        //         stream.SendNext(_rigidbody.velocity);
+        //         stream.SendNext(_rigidbody.angularVelocity);
+        //     }
+        //     else
+        //     {
+        //         _racketDirection = (Vector2)stream.ReceiveNext();
+        //         _rigidbody.velocity = (Vector2)stream.ReceiveNext();
+        //         _rigidbody.angularVelocity = (float)stream.ReceiveNext();
+        //         
+        //     }
+        // }
     }
 }
