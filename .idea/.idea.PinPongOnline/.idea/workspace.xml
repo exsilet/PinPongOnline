@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95596d46-b3be-4568-b3b5-321c489cf718" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Infrastructure/StaticData/Hero/Bear.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Infrastructure/StaticData/Hero/Bear.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Infrastructure/StaticData/Hero/Boy.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Infrastructure/StaticData/Hero/Boy.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallBounce.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallBounce.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMoved.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMoved.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +159,7 @@
       <workItem from="1717511894265" duration="2875000" />
       <workItem from="1717631361521" duration="4008000" />
       <workItem from="1717635530269" duration="2037000" />
+      <workItem from="1718220602897" duration="1575000" />
     </task>
     <servers />
   </component>

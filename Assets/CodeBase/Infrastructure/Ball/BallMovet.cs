@@ -33,8 +33,6 @@ namespace CodeBase.Infrastructure.Ball
 
             _startPosition = _rigidbody.position;
             
-            
-            //Invoke("StartMove", 2f);
             StartMove();
 
             if (_photonView.IsMine)
