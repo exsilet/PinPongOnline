@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95596d46-b3be-4568-b3b5-321c489cf718" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/OpenSkillView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/OpenSkillView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/PlayerSkin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/PlayerSkin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/Shop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/SkillView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/SkillView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/SkillViewPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/SkillViewPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/ViewActiveSkills.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/ViewActiveSkill.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/ViewActiveSkills.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/UI/ViewActiveSkill.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Photon/StartServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Photon/StartServer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Hud/HudMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Hud/HudMenu.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Infrastructure/StaticData/Hero/Bear.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Infrastructure/StaticData/Hero/Bear.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Infrastructure/StaticData/Hero/Boy.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Infrastructure/StaticData/Hero/Boy.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

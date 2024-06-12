@@ -15,4 +15,4 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
   Prefab: {fileID: 5733094012825286141, guid: 5c8b215b57acf1c4c8bb0d269698d257, type: 3}
   PlayerTypeId: 0
-  SkillData: {fileID: 11400000, guid: 1a40152c9e39a1d4a80a042fb14c56c5, type: 2}
+  SkillData: {fileID: 11400000, guid: bad233f3846a02145b6daaf88984e102, type: 2}
