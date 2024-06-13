@@ -10,6 +10,8 @@ namespace CodeBase.Infrastructure.Player
         [SerializeField] private Transform _targetActivatedMirror;
         [SerializeField] private Transform _targetCenter;
         
+        public bool PositionRight;
+        
         private Inventory _inventory;
         private BallMovet _ball;
         private PlayerStaticData _playerData;
@@ -20,13 +22,11 @@ namespace CodeBase.Infrastructure.Player
         private float _mirrorPosition;
         private bool _touched;
         private bool _activatedMirror;
+        private GameObject _mirrorActive;
         public GameObject TargetPosition => _targetActivatedMirror.gameObject;
         public bool TouchedPlayer => _touched;
         public bool ActivatedSkill => _activatedMirror;
-        public bool PositionRight;
-        public GameObject mirrorActive;
-        
-        
+
         public void Construct(PlayerStaticData data, BallMovet ball)
         {
             _playerData = data;
@@ -42,7 +42,7 @@ namespace CodeBase.Infrastructure.Player
                 SwapPositionCenter(_targetCenter, _targetCenter.localPosition.x);
             }
 
-            mirrorActive = _targetActivatedMirror.gameObject;
+            _mirrorActive = _targetActivatedMirror.gameObject;
             _mirrorPosition = _targetActivatedMirror.position.x;
         }
 

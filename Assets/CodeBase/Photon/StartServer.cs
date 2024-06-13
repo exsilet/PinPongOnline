@@ -27,7 +27,6 @@ namespace CodeBase.Photon
 
         private void Awake()
         {
-            //PhotonNetwork.AutomaticallySyncScene = true;
             _stateMachine = AllServices.Container.Single<IGameStateMachine>();
         }
 

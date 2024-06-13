@@ -95,8 +95,9 @@ GameObject:
   - component: {fileID: 3138563162184495977}
   - component: {fileID: 1882860751668548278}
   - component: {fileID: 5754913732827930731}
+  - component: {fileID: 1380048516448137702}
   - component: {fileID: 3796318306300720778}
-  - component: {fileID: 349485671776527951}
+  - component: {fileID: 9161596172072122438}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -182,6 +183,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &1380048516448137702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017750699263255652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2856760339
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 3796318306300720778}
+  - {fileID: 9161596172072122438}
 --- !u!114 &3796318306300720778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +219,7 @@ MonoBehaviour:
   _maxSpeed: 15
   _fireSpeed: 17
   _swiperSpeed: 25
---- !u!114 &349485671776527951
+--- !u!114 &9161596172072122438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,10 +228,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8017750699263255652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Script: {fileID: 11500000, guid: c5e690b5fb1084f5ab1c86457af401d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  SyncParent: 1
+  _interpolationTarget: {fileID: 462550760429875797}
+  UsePreciseRotation: 0
+  UseRenderSleepThresholds: 1
+  RenderThresholds:
+    UseEnergy: 1
+    Position: 0.01
+    Rotation: 0.01
+    Scale: 0.01

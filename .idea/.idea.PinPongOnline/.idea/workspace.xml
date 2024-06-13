@@ -6,11 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="95596d46-b3be-4568-b3b5-321c489cf718" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Photon/NetworkRunnerHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Photon/NetworkRunnerHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/LevelLogic/LoadLevelState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/LevelLogic/LoadLevelState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/Fighter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/Fighter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Photon/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Photon/Spawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Photon/StartServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Photon/StartServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NetworRunnerPref.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NetworRunnerPref.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Ball.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Ball.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Ball.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Boy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Boy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +27,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/0a/31e67026/INetworkSceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/0c/3ea7edbb/NetworkInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/28/4dff87b1/IPlayerLeft.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/54/8676aa41/NetworkRunner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/69/572e798c/SimulationBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/96/7d121121/PlayerRef.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/cd/28274eb6/StartGameArgs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f76ff20d9ff469b846a8371e880c369ab800/f2/c6207ec7/SceneRef.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30adf90198bc4c4b83910c6fb1877998174000/51/e5c5a502/Object.cs" root0="SKIP_HIGHLIGHTING" />
@@ -41,10 +50,11 @@
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/GameController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/LocalPlayerData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Menu/NickNameGeneration.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Menu/StartMenu.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Menu/StartMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Pool/NetworkObjectPoolDefault.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/PlayerDataNetworked.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/SpaceshipInput.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/SpaceshipSpawner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/SpaceshipSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/Spaceship/SpawnPoint.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-asteroids-shared-simple-2.0.0/Assets/Asteroids-Shared-Simple/UI/PlayerOverviewPanel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/FusionHelpers/Launcher/FusionLauncher.cs" root0="SKIP_HIGHLIGHTING" />
@@ -53,7 +63,6 @@
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/FusionHelpers/Pooling/LocalObjectPool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/Scripts/Tanknarok/Player/Shot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Skill/MirrorActivated.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Photon/Fusion/Runtime/FusionBootstrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/FusionAddons/Physics/NetworkRigidbody/NetworkRigidbody2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Utilities/ComponentHolderProtocol.cs" root0="SKIP_HIGHLIGHTING" />
@@ -154,6 +163,8 @@
       <workItem from="1717520158253" duration="3872000" />
       <workItem from="1717601041320" duration="14113000" />
       <workItem from="1718115525940" duration="5648000" />
+      <workItem from="1718230803072" duration="9568000" />
+      <workItem from="1718241690945" duration="737000" />
     </task>
     <servers />
   </component>

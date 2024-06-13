@@ -1,6 +1,7 @@
 using CodeBase.Infrastructure.Player;
 using CodeBase.Infrastructure.UI;
 using Fusion;
+using Fusion.Addons.Physics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,6 +18,7 @@ namespace CodeBase.Infrastructure.Ball
         //[SerializeField] private PhotonView _photonView;
 
         private Rigidbody2D _rigidbody;
+        private NetworkRigidbody2D _networkRigidbody;
         private float _currentSpeed;
         private Vector2 _startPosition;
         private Vector2 _goalDirection;
@@ -25,6 +27,7 @@ namespace CodeBase.Infrastructure.Ball
         public void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _networkRigidbody = GetComponent<NetworkRigidbody2D>();
             //_photonView = GetComponent<PhotonView>();
 
             _startPosition = _rigidbody.position;
@@ -50,6 +53,13 @@ namespace CodeBase.Infrastructure.Ball
                 // if (_photonView.IsMine)
                 //     photonView.RPC(nameof(SyncBallLaunchInGoalDirection), RpcTarget.AllBuffered, _rigidbody.velocity);
             }
+        }
+
+        public override void Spawned()
+        {
+            _networkRigidbody.Teleport(transform.position);
+            _rigidbody.position = transform.position;
+            _rigidbody.velocity = Vector2.zero;
         }
 
         public void OnCollisionEnter2D(Collision2D collision)

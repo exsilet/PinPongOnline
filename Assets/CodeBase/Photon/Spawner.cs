@@ -1,22 +1,79 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CodeBase.Infrastructure.Ball;
 using CodeBase.Infrastructure.Player;
 using Fusion;
 using Fusion.Sockets;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CodeBase.Photon
 {
+    [RequireComponent(typeof(NetworkRunner))]
     public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     {
-        [SerializeField] private NetworkPlayer _playerPrefab;
+        [SerializeField] private NetworkPrefabRef _playerPrefab;
+        [SerializeField] private BallMovet _ball;
+        [SerializeField] private GameObject[] _spawnPoints;
 
-        private PlayerInputHandle _playerInputHandle;
+        private NetworkRunner _networkRunner;
+        private int _index;
+
+        private void Awake()
+        {
+            _networkRunner = GetComponent<NetworkRunner>();
+        }
 
         private void Start()
         {
+            InitializeNetworkRunner(_networkRunner, GameMode.AutoHostOrClient, NetAddress.Any(),
+                SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex), null);
         }
 
+        protected virtual Task InitializeNetworkRunner(NetworkRunner runner, GameMode gameMode, NetAddress address,
+            SceneRef scene, Action<NetworkRunner> initialized)
+        {
+            runner.ProvideInput = true;
+
+            return runner.StartGame(new StartGameArgs
+            {
+                GameMode = gameMode,
+                Address = address,
+                Scene = scene,
+                CustomLobbyName = "OrLobbyID",
+                SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+            });
+        }
+
+
+        public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
+        {
+            if (runner.IsServer)
+            {
+                _index = player.PlayerId % _spawnPoints.Length;
+                var spawnPosition = _spawnPoints[_index].transform.localPosition;
+
+                var playerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
+
+                runner.SetPlayerObject(player, playerObject);
+
+                if (_index > 0)
+                {
+                    var ball = runner.Spawn(_ball, _ball.transform.localPosition, Quaternion.identity, PlayerRef.None);
+                }
+            }
+        }
+
+        public void OnInput(NetworkRunner runner, NetworkInput input)
+        {
+            if (NetworkPlayer.Local != null)
+            {
+                PlayerInputHandle playerInputHandle = NetworkPlayer.Local.GetComponent<PlayerInputHandle>();
+                if (playerInputHandle != null)
+                    input.Set(playerInputHandle.GetNetworkInput());
+            }
+        }
 
         public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
         {
@@ -26,27 +83,8 @@ namespace CodeBase.Photon
         {
         }
 
-        public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
-        {
-            if (runner.IsServer)
-            {
-                Vector3 localPlayer = new Vector3(-7, -1.7f);
-                
-                runner.Spawn(_playerPrefab, localPlayer, Quaternion.identity, player);
-            }
-        }
-
         public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
         {
-        }
-
-        public void OnInput(NetworkRunner runner, NetworkInput input)
-        {
-            if (_playerInputHandle != null && NetworkPlayer.Local != null)
-                _playerInputHandle = NetworkPlayer.Local.GetComponent<PlayerInputHandle>();
-
-            if (_playerInputHandle != null) 
-                input.Set(_playerInputHandle.GetNetworkInput());
         }
 
         public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
@@ -56,69 +94,56 @@ namespace CodeBase.Photon
 
         public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)
         {
-            throw new NotImplementedException();
         }
 
         public void OnConnectedToServer(NetworkRunner runner)
         {
-            throw new NotImplementedException();
         }
 
         public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
         {
-            throw new NotImplementedException();
         }
 
         public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request,
             byte[] token)
         {
-            throw new NotImplementedException();
         }
 
         public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
         {
-            throw new NotImplementedException();
         }
 
         public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message)
         {
-            throw new NotImplementedException();
         }
 
         public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
         {
-            throw new NotImplementedException();
         }
 
         public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
         {
-            throw new NotImplementedException();
         }
 
         public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
         {
-            throw new NotImplementedException();
         }
 
         public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key,
             ArraySegment<byte> data)
         {
-            throw new NotImplementedException();
         }
 
         public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress)
         {
-            throw new NotImplementedException();
         }
 
         public void OnSceneLoadDone(NetworkRunner runner)
         {
-            throw new NotImplementedException();
         }
 
         public void OnSceneLoadStart(NetworkRunner runner)
         {
-            throw new NotImplementedException();
         }
     }
 }

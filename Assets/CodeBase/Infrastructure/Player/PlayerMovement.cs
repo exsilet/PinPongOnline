@@ -32,14 +32,11 @@ namespace CodeBase.Infrastructure.Player
 
             if (GetInput(out NetworkInputData data))
             {
-                if (Application.isMobilePlatform)
-                {
-                    ControlInput();
-                }
-                else
-                {
-                    PlayerControl(data.Direction);
-                }
+                _racketDirection = data.Direction;
+            }
+            else
+            {
+                _racketDirection = Vector2.zero;
             }
             
             _rigidbody.velocity = _racketDirection * _racketSpeed;
@@ -54,18 +51,6 @@ namespace CodeBase.Infrastructure.Player
             // else
             // {
             //     PlayerControl();
-            // }
-            
-            // if (GetComponent<PhotonView>().IsMine)
-            // {
-            //     if (Application.isMobilePlatform)
-            //     {
-            //         ControlInput();
-            //     }
-            //     else
-            //     {
-            //         PlayerControl();
-            //     }
             // }
         }
 
@@ -91,12 +76,5 @@ namespace CodeBase.Infrastructure.Player
             _racketDirection = direction;
             //_racketDirection = new Vector2(0, Input.GetAxisRaw(Vertical));
         }
-        
-        // [PunRPC]
-        // private void SyncPlayerMovement(Vector2 position, Vector2 velocity)
-        // {
-        //     _rigidbody.position = position;
-        //     _rigidbody.velocity = velocity;
-        // }
     }
 }

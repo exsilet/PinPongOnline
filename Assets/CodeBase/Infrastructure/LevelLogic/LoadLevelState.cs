@@ -46,7 +46,7 @@ namespace CodeBase.Infrastructure.LevelLogic
         {
             _gameFactory.CreateHudGame();
             _gameFactory.CreatePlayingField();
-            CreateHeroWorld(_playerData, _skillData);
+            //CreateHeroWorld(_playerData, _skillData);
         }
 
         private void CreateHeroWorld(PlayerStaticData playerData, SkillStaticData skillData)
