@@ -23,7 +23,7 @@ namespace CodeBase.Infrastructure.Ball
         private Vector2 _goalDirection;
         private Vector2 _reflectDirection;
         private bool _ballInGoal = false;
-        
+
         private bool _valuesReceived = false;
 
         public void Start()
@@ -32,7 +32,7 @@ namespace CodeBase.Infrastructure.Ball
             _photonView = GetComponent<PhotonView>();
 
             _startPosition = _rigidbody.position;
-            
+
             StartMove();
 
             if (_photonView.IsMine)
@@ -41,7 +41,7 @@ namespace CodeBase.Infrastructure.Ball
 
         public void FixedUpdate()
         {
-            _rigidbody.velocity = _rigidbody.velocity.normalized * _currentSpeed;
+            _rigidbody.velocity = _reflectDirection.normalized * _currentSpeed;
         }
 
         public void Update()
@@ -134,7 +134,7 @@ namespace CodeBase.Infrastructure.Ball
         public void SkillPowerDamage(int direction)
         {
             _currentSpeed = _swiperSpeed;
-            Vector2 forwardDirection = new Vector2( direction, 0);
+            Vector2 forwardDirection = new Vector2(direction, 0);
             _rigidbody.velocity = forwardDirection * _currentSpeed;
         }
 
@@ -142,8 +142,9 @@ namespace CodeBase.Infrastructure.Ball
         {
             if (stream.IsWriting)
             {
-                stream.SendNext(transform.position);
-                stream.SendNext(transform.rotation);
+                stream.SendNext(_reflectDirection);
+                stream.SendNext(_startPosition);
+                stream.SendNext(_goalDirection);
                 stream.SendNext(_rigidbody.velocity);
                 stream.SendNext(_rigidbody.angularVelocity);
             }

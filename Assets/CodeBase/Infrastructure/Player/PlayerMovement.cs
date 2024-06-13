@@ -1,10 +1,11 @@
+using System;
 using Photon.Pun;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerMovement : MonoBehaviourPun
+    public class PlayerMovement : MonoBehaviourPun, IPunObservable
     {
         private const string Vertical = "Vertical";
 
@@ -16,6 +17,12 @@ namespace CodeBase.Infrastructure.Player
         private Rigidbody2D _rigidbody;
         private Vector2 _racketDirection;
         private Camera _camera;
+        private PhotonView _photon;
+
+        private void Awake()
+        {
+            _photon = GetComponent<PhotonView>();
+        }
 
         private void Start()
         {
@@ -75,6 +82,20 @@ namespace CodeBase.Infrastructure.Player
         {
             _rigidbody.position = position;
             _rigidbody.velocity = velocity;
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(_racketDirection);
+                stream.SendNext(_rigidbody.position);
+            }
+            else
+            {
+                _racketDirection = (Vector2)stream.ReceiveNext();
+                _rigidbody.position = (Vector2)stream.ReceiveNext();
+            }
         }
     }
 }
