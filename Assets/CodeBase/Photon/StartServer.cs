@@ -49,7 +49,7 @@ namespace CodeBase.Photon
         public void SetPlayerData(PlayerStaticData staticData)
         {
             _playerData = staticData;
-            Debug.Log(" change player ");
+            Debug.Log("1 change player ");
         }
 
         public override void OnConnected()
@@ -119,7 +119,7 @@ namespace CodeBase.Photon
             //SceneManager.LoadScene(_sceneIndex);
             _stateMachine.Enter<LoadLevelState, string>(GameScene, _playerData, _skillData);
         }
-
+        
         private void SearchTime()
         {
             _panel.SetActive(true);

@@ -36,17 +36,14 @@ namespace CodeBase.Infrastructure.UI
         public event UnityAction<SkillStaticData, SkillView> AddSkillToInventory;
         public event UnityAction<SkillStaticData, SkillView> AddSkillPanel;
 
-        private void OnEnable()
+        private void Start()
         {
-            if (_isInitialized == false)
-                return;
-            
             _buySkill.Add(OnClick);
             _addSkill.Add(AddSkillToPanel);
             _openPanelViewSkill.Add(OpenView);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _buySkill.Remove(OnClick);
             _addSkill.Remove(AddSkillToPanel);
@@ -68,7 +65,6 @@ namespace CodeBase.Infrastructure.UI
             IsBuySkill(skillStaticData);
             
             _isInitialized = true;
-            OnEnable();
         }
 
         public void OpenView()

@@ -24,10 +24,6 @@ namespace CodeBase.Infrastructure.UI
         private void Start()
         {
             this.Deactivate();
-        }
-
-        private void OnEnable()
-        {
             _byuSkill.Add(Byu);
         }
 
@@ -54,7 +50,6 @@ namespace CodeBase.Infrastructure.UI
             _price.text = skillStaticData.Price.ToString();
 
             _isInitialized = true;
-            OnEnable();
         }
 
         private void Byu()

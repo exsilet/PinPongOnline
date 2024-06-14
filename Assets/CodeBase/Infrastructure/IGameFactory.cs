@@ -17,5 +17,7 @@ namespace CodeBase.Infrastructure
         GameObject GamePlayingField { get; }
         GameObject Ball { get; }
         GameObject CreateHero(PlayerStaticData staticData, SkillStaticData skillData);
+        GameObject CreateHeroOffline(PlayerStaticData staticData, SkillStaticData skillData);
+        GameObject CreateBot(PlayerStaticData staticData, SkillStaticData skillData);
     }
 }

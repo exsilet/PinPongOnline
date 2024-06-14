@@ -3,6 +3,9 @@
     public enum SkillTypeId
     {
         Attacking,
-        Protective
+        Protective,
+        Mirror,
+        FireBoll,
+        DirectBlow
     }
 }

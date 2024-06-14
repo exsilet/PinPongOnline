@@ -189,6 +189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _racketSpeed: 400
+  _swapPosition: 10
+  _minPosition: 0
+  _maxPosition: 0
 --- !u!114 &6052177352752849322
 MonoBehaviour:
   m_ObjectHideFlags: 0

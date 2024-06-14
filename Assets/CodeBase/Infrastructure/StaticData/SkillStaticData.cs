@@ -11,11 +11,15 @@ namespace CodeBase.Infrastructure.StaticData
         public int Price;
 
         [SerializeField] private int _count;
-        
+
+        public float CooldownTime;
         public SkillTypeId Type;
         public bool IsDefault;
         public bool IsByu;
-
+        
         public int Count => _count;
+        public virtual void Activate(GameObject parent){}
+        public virtual void Activate(GameObject parent, bool positionRight){}
+        public virtual void Activate(GameObject parent, GameObject target, bool positionRight){}
     }
 }
