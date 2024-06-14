@@ -1,4 +1,3 @@
-using System;
 using CodeBase.Infrastructure.Player;
 using CodeBase.Infrastructure.UI;
 using Photon.Pun;
@@ -41,7 +40,7 @@ namespace CodeBase.Infrastructure.Ball
 
         public void FixedUpdate()
         {
-            _rigidbody.velocity = _reflectDirection.normalized * _currentSpeed;
+            _rigidbody.velocity =  _rigidbody.velocity.normalized * _currentSpeed;
         }
 
         public void Update()
