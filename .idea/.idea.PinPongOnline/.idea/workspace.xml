@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="95596d46-b3be-4568-b3b5-321c489cf718" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PinPongOnline/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Ball/BallMovet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PUN2_PlayerSync.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Player/PUN2_PlayerSync.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Ball.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,23 +52,7 @@
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/FusionHelpers/Launcher/FusionSession.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/FusionHelpers/Pooling/LocalObjectPool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PhotonFusion/fusion-tanknarok-2.0.0/Assets/Scripts/Tanknarok/Player/Shot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/CodeBase/BallMovement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/CodeBase/BallMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Skill/MirrorActivated.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Editor/AndroidManifestHelper.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Editor/AndroidManifestHelper.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Examples/Pong/Scenes/Fusion.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Examples/Pong/Scenes/Fusion.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Examples/Pong/Scenes/Fusion/Assemblies.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Examples/Pong/Scenes/Fusion/Assemblies.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Examples/Pong/Scenes/Fusion/Assemblies.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Examples/Pong/Scenes/Fusion/Assemblies.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Examples/Pong/Scenes/FusionAddons.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Mirror/Examples/Pong/Scenes/FusionAddons.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Resources/Ball.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Resources/Ball.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Resources/Ball.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/stud Unity/game Git/PinPongOnline/Assets/Resources/Ball.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Utilities/ComponentHolderProtocol.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../WarPeople/Assets/Scripts/Infrastructure/EnemyBot/BotFighter.cs" root0="SKIP_HIGHLIGHTING" />
@@ -108,6 +91,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;diff.base&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -171,6 +155,9 @@
       <workItem from="1717635530269" duration="2037000" />
       <workItem from="1718220602897" duration="1575000" />
       <workItem from="1718300421062" duration="5156000" />
+      <workItem from="1718384867163" duration="2309000" />
+      <workItem from="1718389621738" duration="182000" />
+      <workItem from="1718394429874" duration="1501000" />
     </task>
     <servers />
   </component>
