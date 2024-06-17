@@ -1,50 +1,69 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.VisualScripting;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace CodeBase.Infrastructure.AssetManagement
 {
-    public class AssetProvider : IAssetProvider
+    public class AssetProvider
     {
-        public GameObject Instantiate(string path)
+        public T Get<T>() where T : MonoBehaviour
         {
-            var prefab = Resources.Load<GameObject>(path);
-            return Object.Instantiate(prefab);
+            if (Resources.Load(typeof(T).Name) == null)
+                throw new Exception("Asset not found: " + typeof(T).Name);
+
+            var load =
+                Resources
+                    .Load(typeof(T).Name)
+                    .GetComponent<T>();
+
+            if (load == null)
+                throw new Exception("Asset not found: " + typeof(T).Name);
+
+            return load;
         }
 
-        public GameObject Instantiate(string path, Vector3 at)
+        public T Get<T>(string path) where T : MonoBehaviour
         {
-            var prefab = Resources.Load<GameObject>(path);
-            return Object.Instantiate(prefab, at, Quaternion.identity);
-        }
-        
-        public GameObject Instantiate(string path, string pathPosition)
-        {
-            var prefab = Resources.Load<GameObject>(path);
-            var prefabPosition = Resources.Load<GameObject>(pathPosition);
-            return Object.Instantiate(prefab, prefabPosition.transform.position, Quaternion.identity);
+            var load =
+                Resources
+                    .Load(path)
+                    .GetComponent<T>();
+
+            if (load == null)
+                throw new Exception("Asset not found: " + path);
+
+            return load;
         }
 
-        public GameObject InstantiatePhoton(string path, string pathPosition)
+        public T GetConfig<T>() where T : ScriptableObject
         {
-            var prefab = Resources.Load<GameObject>(path);
-            var prefabPosition = Resources.Load<GameObject>(pathPosition);
-            return prefab;
-            //return PhotonNetwork.Instantiate(prefab.name, prefabPosition.transform.position, Quaternion.identity);
+            if (Resources.Load(typeof(T).Name) == null)
+                throw new Exception("Asset not found: " + typeof(T).Name);
+
+            var load =
+                Resources
+                    .Load(typeof(T).Name);
+
+            if (load == null)
+                throw new Exception("Asset not found: " + typeof(T).Name);
+
+            return load as T;
         }
-        
-        public GameObject InstantiatePhoton(string path)
+
+        // public EnemyMeshModel GetEnemyMeshModel(EnemyTypeId enemyId) =>
+        //     Resources.Load<EnemyMeshModel>(enemyId.ToString());
+
+        public GameObject Get(string path)
         {
-            var prefab = Resources.Load<GameObject>(path);
-            Vector2 transformPosition = new Vector2(0, 0);
-            return prefab;
-            //return PhotonNetwork.Instantiate(prefab.name, transformPosition, Quaternion.identity);
-        }
-        
-        public GameObject InstantiatePhotonRoom(string path, string pathPosition)
-        {
-            var prefab = Resources.Load<GameObject>(path);
-            var prefabPosition = Resources.Load<GameObject>(pathPosition);
-            return prefab;
-            //return PhotonNetwork.InstantiateRoomObject(prefab.name, prefabPosition.transform.position, Quaternion.identity);
+            Object load =
+                Resources
+                    .Load(path);
+
+            if (load == null)
+                throw new Exception("Asset not found: " + path);
+
+            return load as GameObject;
         }
     }
 }

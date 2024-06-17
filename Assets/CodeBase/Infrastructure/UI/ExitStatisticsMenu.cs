@@ -9,13 +9,7 @@ namespace CodeBase.Infrastructure.UI
     public class ExitStatisticsMenu : MonoBehaviour
     {
         [SerializeField] private Button _exitMenu;
-
-        private PlayerMoney _panelMenu;
-        
-        public void Construct(PlayerMoney panelMenu)
-        {
-            _panelMenu = panelMenu;
-        }
+        [SerializeField] private PlayerMoney _panelMenu;
         
         private void OnEnable()
         {

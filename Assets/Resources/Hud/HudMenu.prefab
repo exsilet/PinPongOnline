@@ -1457,11 +1457,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxPlayer: 1
-  _connectionStatus: {fileID: 4854946873648755047}
   _timerStart: 0
   _textTimer: {fileID: 5017470643876201960}
   _panel: {fileID: 1983161082587575954}
   _playerSkin: {fileID: 9085315776891065016}
+  _gameScenePath: 
+  _networkRunnerPrefab: {fileID: 1814294266325210065, guid: 28a508efbffa88c4183391dcea69df8f, type: 3}
 --- !u!1 &1285243505997638437
 GameObject:
   m_ObjectHideFlags: 0

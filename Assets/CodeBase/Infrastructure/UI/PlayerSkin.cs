@@ -1,5 +1,4 @@
-﻿using System;
-using CodeBase.Infrastructure.Player;
+﻿using CodeBase.Infrastructure.Player;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.UIExtensions;
 using UnityEngine;
@@ -16,18 +15,10 @@ namespace CodeBase.Infrastructure.UI
         [SerializeField] private Inventory _inventory;
         [SerializeField] private Button _openPanelStatic;
         [SerializeField] private Button _openPanelStatic2;
+        [SerializeField] private PlayerPanelSkin _panelSkin;
         
-        private PlayerStaticData _currentPlayerData;
-        private PlayerPanelSkin _panelSkin;
-
+        [Inject] private PlayerStaticData _currentPlayerData;
         public PlayerStaticData PlayerStaticData => _currentPlayerData;
-
-        [Inject]
-        private void ChoseSkins(PlayerStaticData playerData) => 
-            _currentPlayerData = playerData;
-        
-        public void Construct(PlayerPanelSkin panelSkin) => 
-            _panelSkin = panelSkin;
 
         private void Start()
         {

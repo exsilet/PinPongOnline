@@ -2,6 +2,7 @@
 using CodeBase.Infrastructure.StaticData;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace CodeBase.Infrastructure.UI
 {
@@ -15,13 +16,8 @@ namespace CodeBase.Infrastructure.UI
         
         private PlayerSkin _playerIcon3;
         private List<PlayerView> _playerViews = new();
-        private PlayerStaticData _currentSkin;
-
-        public void Construct(PlayerSkin playerIcon3, PlayerStaticData playerData)
-        {
-            _playerIcon3 = playerIcon3;
-            _currentSkin = playerData;
-        }
+        
+        [Inject] private PlayerStaticData _currentSkin;
         
         private void Start()
         {
@@ -37,6 +33,13 @@ namespace CodeBase.Infrastructure.UI
                 _playerIcon.sprite = _currentSkin.Icon;
                 _playerIcon2.sprite = _currentSkin.Icon;
             }
+        }
+
+
+        public void Construct(PlayerSkin playerSkin, PlayerStaticData currentPlayerData)
+        {
+            _playerIcon3 = playerSkin;
+            _currentSkin = currentPlayerData;
         }
 
         public void ChooseSkin(PlayerStaticData data)

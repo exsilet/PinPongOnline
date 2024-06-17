@@ -1,46 +1,33 @@
 ﻿using System;
 using System.Collections;
-using CodeBase.Infrastructure.LevelLogic;
-using CodeBase.Infrastructure.Services;
-using CodeBase.Infrastructure.States;
+using System.Linq;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.UI;
+using Fusion;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CodeBase.Photon
 {
     public class StartServer : MonoBehaviour
     {
         [SerializeField] private byte _maxPlayer;
-        [SerializeField] private TMP_Text _connectionStatus;
         [SerializeField] private float _timerStart;
         [SerializeField] private TMP_Text _textTimer;
         [SerializeField] private GameObject _panel;
         [SerializeField] private PlayerSkin _playerSkin;
+        [SerializeField] private string _gameScenePath;
+        [SerializeField] private NetworkRunner _networkRunnerPrefab;
 
         private string _playerName;
-        private const string GameScene = "GameScene";
-        private IGameStateMachine _stateMachine;
         private PlayerStaticData _playerData;
         private SkillStaticData _skillData;
-
-        private void Awake()
-        {
-            _stateMachine = AllServices.Container.Single<IGameStateMachine>();
-        }
+        private NetworkRunner _runnerInstance;
 
         private void Start()
         {
-            ConnectToPhotonServer();
             _playerData = _playerSkin.PlayerStaticData;
-        }
-
-        private void ConnectToPhotonServer()
-        {
-            //_connectionStatus.text = "Connecting...";
-            // PhotonNetwork.GameVersion = "1";
-            // PhotonNetwork.ConnectUsingSettings();
         }
         
         public void SetPlayerData(PlayerStaticData staticData)
@@ -48,75 +35,59 @@ namespace CodeBase.Photon
             _playerData = staticData;
             Debug.Log(" change player ");
         }
-
-        public void OnConnected()
-        {
-            //base.OnConnected();
-
-            _connectionStatus.text = "Connected to Photon!";
-            _connectionStatus.color = Color.green;
-        }
         
         public void QuickMatch()
         {
-            //PhotonNetwork.JoinRandomRoom();
+            StartGame(GameMode.Shared);
             OnJoinedRoom();
         }
 
-        public void OnConnectedToMaster()
+        private void OnJoinedRoom()
         {
-            Debug.Log("Connected to master");
-        }
-        
-        private void CreateRoom()
-        {
-            // if (PhotonNetwork.IsConnected)
-            // {
-            //     PhotonNetwork.LocalPlayer.NickName = _playerName;
-            //     RoomOptions roomOptions = new RoomOptions()
-            //     {
-            //         CleanupCacheOnLeave = false,
-            //         MaxPlayers = _maxPlayer
-            //     };
-            //
-            //     if (roomOptions.MaxPlayers >= _maxPlayer)
-            //     {
-            //         PhotonNetwork.CreateRoom(null, roomOptions);
-            //     }
-            // }
-        }
-        
-        public void OnJoinRandomFailed(short returnCode, string message)
-        {
-            CreateRoom();
-        }
-        
-        public void OnJoinedRoom()
-        {
-            // PhotonNetwork.SendRate = 60;
-            // PhotonNetwork.SerializationRate = 60;
-            
             Debug.Log("Connected to room");
             StartCoroutine(ActivePlayer());
         }
         
+        private async void StartGame(GameMode mode)
+        {
+            if (_runnerInstance == null)
+            {
+                _runnerInstance = Instantiate(_networkRunnerPrefab);
+            }
+            
+            _runnerInstance.ProvideInput = true;
+
+            var startGameArgs = new StartGameArgs()
+            {
+                GameMode = mode,
+                //SessionName = roomName,
+                Scene = SceneRef.FromIndex(SceneUtility.GetBuildIndexByScenePath(_gameScenePath)),
+                //ObjectProvider = _runnerInstance.GetComponent<NetworkObjectPoolDefault>(),
+            };
+            
+            await _runnerInstance.StartGame(startGameArgs);
+        }
+        
         private IEnumerator ActivePlayer()
         {
-            // while (FusionPlayer != _maxPlayer)
-            // {
-            //     SearchTime();
-            //     yield return null;
-            // }
+            while ( _runnerInstance.ActivePlayers.Count() != _maxPlayer)
+            {
+                SearchTime();
+                yield return null;
+            }
             
             EnterTowPlayers();
-            yield return null;
+            //yield return null;
         }
 
         private void EnterTowPlayers()
         {
             StopCoroutine(ActivePlayer());
-            //SceneManager.LoadScene(_sceneIndex);
-            _stateMachine.Enter<LoadLevelState, string>(GameScene, _playerData, _skillData);
+            
+            if (_runnerInstance.IsServer)
+            {
+                _runnerInstance.LoadScene(_gameScenePath);
+            }
         }
         
         private void SearchTime()

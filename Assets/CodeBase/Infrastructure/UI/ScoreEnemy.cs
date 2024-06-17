@@ -24,9 +24,7 @@ namespace CodeBase.Infrastructure.UI
             if (collision.gameObject.GetComponent<BallMovet>())
             {
                 _scorePlayer++;
-                //_ball.PlayerStart = true;
                 TextChanged?.Invoke(_scorePlayer);
-                //StartCoroutine(_ball.Launch());
             }
         }
     }
